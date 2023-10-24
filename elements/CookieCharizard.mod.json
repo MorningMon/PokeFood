@@ -1,12 +1,10 @@
 {
-  "_fv": 47,
+  "_fv": 43,
   "_type": "item",
   "definition": {
     "renderType": 0,
     "texture": "charizard",
     "customModelName": "Normal",
-    "customProperties": {},
-    "states": [],
     "name": "Charizard cookie",
     "rarity": "COMMON",
     "creativeTab": {

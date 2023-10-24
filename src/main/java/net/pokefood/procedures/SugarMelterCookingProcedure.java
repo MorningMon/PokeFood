@@ -23,7 +23,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class SugarMelterCookingProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
 		double time = 0;
-		if (((world.getBlockState(BlockPos.containing(x, y, z))).getBlock().getStateDefinition().getProperty("lit") instanceof BooleanProperty _getbp1 && (world.getBlockState(BlockPos.containing(x, y, z))).getValue(_getbp1)) == true) {
+		if (((world.getBlockState(new BlockPos(x, y, z))).getBlock().getStateDefinition().getProperty("lit") instanceof BooleanProperty _getbp1 && (world.getBlockState(new BlockPos(x, y, z))).getValue(_getbp1)) == true) {
 			time = new Object() {
 				public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 					BlockEntity blockEntity = world.getBlockEntity(pos);
@@ -31,7 +31,7 @@ public class SugarMelterCookingProcedure {
 						return blockEntity.getPersistentData().getDouble(tag);
 					return -1;
 				}
-			}.getValue(world, BlockPos.containing(x, y, z), "time");
+			}.getValue(world, new BlockPos(x, y, z), "time");
 			if (time < 40) {
 				time = time + 1;
 				if ((new Object() {
@@ -42,7 +42,7 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == Items.SUGAR && ((new Object() {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == Items.SUGAR && ((new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -50,7 +50,7 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 3)).getItem() == ItemStack.EMPTY.getItem() || (new Object() {
+				}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == ItemStack.EMPTY.getItem() || (new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -58,9 +58,9 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 3)).getItem() == Items.WHITE_DYE)) {
+				}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == Items.WHITE_DYE)) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 2;
 							final ItemStack _setstack = new ItemStack(PokefoodModItems.CRYSTALIZED_SUGAR_0.get());
@@ -72,7 +72,7 @@ public class SugarMelterCookingProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, BlockPos.containing(x, y, z), 2));
+							}.getAmount(world, new BlockPos(x, y, z), 2));
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 								if (capability instanceof IItemHandlerModifiable)
 									((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -80,7 +80,7 @@ public class SugarMelterCookingProcedure {
 						}
 					}
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 3;
 							final int _amount = 1;
@@ -95,7 +95,7 @@ public class SugarMelterCookingProcedure {
 					}
 					{
 						int _value = 1;
-						BlockPos _pos = BlockPos.containing(x, y, z);
+						BlockPos _pos = new BlockPos(x, y, z);
 						BlockState _bs = world.getBlockState(_pos);
 						if (_bs.getBlock().getStateDefinition().getProperty("color") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 							world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -108,7 +108,7 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -116,9 +116,9 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 3)).getItem() == Items.LIGHT_GRAY_DYE) {
+				}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == Items.LIGHT_GRAY_DYE) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 2;
 							final ItemStack _setstack = new ItemStack(PokefoodModItems.CRYSTALIZED_SUGAR_1.get());
@@ -130,7 +130,7 @@ public class SugarMelterCookingProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, BlockPos.containing(x, y, z), 2));
+							}.getAmount(world, new BlockPos(x, y, z), 2));
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 								if (capability instanceof IItemHandlerModifiable)
 									((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -138,7 +138,7 @@ public class SugarMelterCookingProcedure {
 						}
 					}
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 3;
 							final int _amount = 1;
@@ -153,7 +153,7 @@ public class SugarMelterCookingProcedure {
 					}
 					{
 						int _value = 2;
-						BlockPos _pos = BlockPos.containing(x, y, z);
+						BlockPos _pos = new BlockPos(x, y, z);
 						BlockState _bs = world.getBlockState(_pos);
 						if (_bs.getBlock().getStateDefinition().getProperty("color") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 							world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -166,7 +166,7 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -174,9 +174,9 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 3)).getItem() == Items.GRAY_DYE) {
+				}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == Items.GRAY_DYE) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 2;
 							final ItemStack _setstack = new ItemStack(PokefoodModItems.CRYSTALIZED_SUGAR_2.get());
@@ -188,7 +188,7 @@ public class SugarMelterCookingProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, BlockPos.containing(x, y, z), 2));
+							}.getAmount(world, new BlockPos(x, y, z), 2));
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 								if (capability instanceof IItemHandlerModifiable)
 									((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -196,7 +196,7 @@ public class SugarMelterCookingProcedure {
 						}
 					}
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 3;
 							final int _amount = 1;
@@ -211,7 +211,7 @@ public class SugarMelterCookingProcedure {
 					}
 					{
 						int _value = 3;
-						BlockPos _pos = BlockPos.containing(x, y, z);
+						BlockPos _pos = new BlockPos(x, y, z);
 						BlockState _bs = world.getBlockState(_pos);
 						if (_bs.getBlock().getStateDefinition().getProperty("color") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 							world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -224,7 +224,7 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -232,9 +232,9 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 3)).getItem() == Items.BLACK_DYE) {
+				}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == Items.BLACK_DYE) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 2;
 							final ItemStack _setstack = new ItemStack(PokefoodModItems.CRYSTALIZED_SUGAR_3.get());
@@ -246,7 +246,7 @@ public class SugarMelterCookingProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, BlockPos.containing(x, y, z), 2));
+							}.getAmount(world, new BlockPos(x, y, z), 2));
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 								if (capability instanceof IItemHandlerModifiable)
 									((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -254,7 +254,7 @@ public class SugarMelterCookingProcedure {
 						}
 					}
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 3;
 							final int _amount = 1;
@@ -269,7 +269,7 @@ public class SugarMelterCookingProcedure {
 					}
 					{
 						int _value = 4;
-						BlockPos _pos = BlockPos.containing(x, y, z);
+						BlockPos _pos = new BlockPos(x, y, z);
 						BlockState _bs = world.getBlockState(_pos);
 						if (_bs.getBlock().getStateDefinition().getProperty("color") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 							world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -282,7 +282,7 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -290,9 +290,9 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 3)).getItem() == Items.BROWN_DYE) {
+				}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == Items.BROWN_DYE) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 2;
 							final ItemStack _setstack = new ItemStack(PokefoodModItems.CRYSTALIZED_SUGAR_4.get());
@@ -304,7 +304,7 @@ public class SugarMelterCookingProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, BlockPos.containing(x, y, z), 2));
+							}.getAmount(world, new BlockPos(x, y, z), 2));
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 								if (capability instanceof IItemHandlerModifiable)
 									((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -312,7 +312,7 @@ public class SugarMelterCookingProcedure {
 						}
 					}
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 3;
 							final int _amount = 1;
@@ -327,7 +327,7 @@ public class SugarMelterCookingProcedure {
 					}
 					{
 						int _value = 5;
-						BlockPos _pos = BlockPos.containing(x, y, z);
+						BlockPos _pos = new BlockPos(x, y, z);
 						BlockState _bs = world.getBlockState(_pos);
 						if (_bs.getBlock().getStateDefinition().getProperty("color") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 							world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -340,7 +340,7 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -348,9 +348,9 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 3)).getItem() == Items.RED_DYE) {
+				}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == Items.RED_DYE) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 2;
 							final ItemStack _setstack = new ItemStack(PokefoodModItems.CRYSTALIZED_SUGAR_5.get());
@@ -362,7 +362,7 @@ public class SugarMelterCookingProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, BlockPos.containing(x, y, z), 2));
+							}.getAmount(world, new BlockPos(x, y, z), 2));
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 								if (capability instanceof IItemHandlerModifiable)
 									((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -370,7 +370,7 @@ public class SugarMelterCookingProcedure {
 						}
 					}
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 3;
 							final int _amount = 1;
@@ -385,7 +385,7 @@ public class SugarMelterCookingProcedure {
 					}
 					{
 						int _value = 6;
-						BlockPos _pos = BlockPos.containing(x, y, z);
+						BlockPos _pos = new BlockPos(x, y, z);
 						BlockState _bs = world.getBlockState(_pos);
 						if (_bs.getBlock().getStateDefinition().getProperty("color") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 							world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -398,7 +398,7 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -406,9 +406,9 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 3)).getItem() == Items.ORANGE_DYE) {
+				}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == Items.ORANGE_DYE) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 2;
 							final ItemStack _setstack = new ItemStack(PokefoodModItems.CRYSTALIZED_SUGAR_6.get());
@@ -420,7 +420,7 @@ public class SugarMelterCookingProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, BlockPos.containing(x, y, z), 2));
+							}.getAmount(world, new BlockPos(x, y, z), 2));
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 								if (capability instanceof IItemHandlerModifiable)
 									((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -428,7 +428,7 @@ public class SugarMelterCookingProcedure {
 						}
 					}
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 3;
 							final int _amount = 1;
@@ -443,7 +443,7 @@ public class SugarMelterCookingProcedure {
 					}
 					{
 						int _value = 7;
-						BlockPos _pos = BlockPos.containing(x, y, z);
+						BlockPos _pos = new BlockPos(x, y, z);
 						BlockState _bs = world.getBlockState(_pos);
 						if (_bs.getBlock().getStateDefinition().getProperty("color") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 							world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -456,7 +456,7 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -464,9 +464,9 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 3)).getItem() == Items.YELLOW_DYE) {
+				}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == Items.YELLOW_DYE) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 2;
 							final ItemStack _setstack = new ItemStack(PokefoodModItems.CRYSTALIZED_SUGAR_7.get());
@@ -478,7 +478,7 @@ public class SugarMelterCookingProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, BlockPos.containing(x, y, z), 2));
+							}.getAmount(world, new BlockPos(x, y, z), 2));
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 								if (capability instanceof IItemHandlerModifiable)
 									((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -486,7 +486,7 @@ public class SugarMelterCookingProcedure {
 						}
 					}
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 3;
 							final int _amount = 1;
@@ -501,7 +501,7 @@ public class SugarMelterCookingProcedure {
 					}
 					{
 						int _value = 8;
-						BlockPos _pos = BlockPos.containing(x, y, z);
+						BlockPos _pos = new BlockPos(x, y, z);
 						BlockState _bs = world.getBlockState(_pos);
 						if (_bs.getBlock().getStateDefinition().getProperty("color") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 							world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -514,7 +514,7 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -522,9 +522,9 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 3)).getItem() == Items.LIME_DYE) {
+				}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == Items.LIME_DYE) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 2;
 							final ItemStack _setstack = new ItemStack(PokefoodModItems.CRYSTALIZED_SUGAR_8.get());
@@ -536,7 +536,7 @@ public class SugarMelterCookingProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, BlockPos.containing(x, y, z), 2));
+							}.getAmount(world, new BlockPos(x, y, z), 2));
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 								if (capability instanceof IItemHandlerModifiable)
 									((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -544,7 +544,7 @@ public class SugarMelterCookingProcedure {
 						}
 					}
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 3;
 							final int _amount = 1;
@@ -559,7 +559,7 @@ public class SugarMelterCookingProcedure {
 					}
 					{
 						int _value = 9;
-						BlockPos _pos = BlockPos.containing(x, y, z);
+						BlockPos _pos = new BlockPos(x, y, z);
 						BlockState _bs = world.getBlockState(_pos);
 						if (_bs.getBlock().getStateDefinition().getProperty("color") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 							world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -572,7 +572,7 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -580,9 +580,9 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 3)).getItem() == Items.GREEN_DYE) {
+				}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == Items.GREEN_DYE) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 2;
 							final ItemStack _setstack = new ItemStack(PokefoodModItems.CRYSTALIZED_SUGAR_9.get());
@@ -594,7 +594,7 @@ public class SugarMelterCookingProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, BlockPos.containing(x, y, z), 2));
+							}.getAmount(world, new BlockPos(x, y, z), 2));
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 								if (capability instanceof IItemHandlerModifiable)
 									((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -602,7 +602,7 @@ public class SugarMelterCookingProcedure {
 						}
 					}
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 3;
 							final int _amount = 1;
@@ -617,7 +617,7 @@ public class SugarMelterCookingProcedure {
 					}
 					{
 						int _value = 10;
-						BlockPos _pos = BlockPos.containing(x, y, z);
+						BlockPos _pos = new BlockPos(x, y, z);
 						BlockState _bs = world.getBlockState(_pos);
 						if (_bs.getBlock().getStateDefinition().getProperty("color") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 							world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -630,7 +630,7 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -638,9 +638,9 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 3)).getItem() == Items.CYAN_DYE) {
+				}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == Items.CYAN_DYE) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 2;
 							final ItemStack _setstack = new ItemStack(PokefoodModItems.CRYSTALIZED_SUGAR_10.get());
@@ -652,7 +652,7 @@ public class SugarMelterCookingProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, BlockPos.containing(x, y, z), 2));
+							}.getAmount(world, new BlockPos(x, y, z), 2));
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 								if (capability instanceof IItemHandlerModifiable)
 									((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -660,7 +660,7 @@ public class SugarMelterCookingProcedure {
 						}
 					}
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 3;
 							final int _amount = 1;
@@ -675,7 +675,7 @@ public class SugarMelterCookingProcedure {
 					}
 					{
 						int _value = 11;
-						BlockPos _pos = BlockPos.containing(x, y, z);
+						BlockPos _pos = new BlockPos(x, y, z);
 						BlockState _bs = world.getBlockState(_pos);
 						if (_bs.getBlock().getStateDefinition().getProperty("color") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 							world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -688,7 +688,7 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -696,9 +696,9 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 3)).getItem() == Items.LIGHT_BLUE_DYE) {
+				}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == Items.LIGHT_BLUE_DYE) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 2;
 							final ItemStack _setstack = new ItemStack(PokefoodModItems.CRYSTALIZED_SUGAR_11.get());
@@ -710,7 +710,7 @@ public class SugarMelterCookingProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, BlockPos.containing(x, y, z), 2));
+							}.getAmount(world, new BlockPos(x, y, z), 2));
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 								if (capability instanceof IItemHandlerModifiable)
 									((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -718,7 +718,7 @@ public class SugarMelterCookingProcedure {
 						}
 					}
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 3;
 							final int _amount = 1;
@@ -733,7 +733,7 @@ public class SugarMelterCookingProcedure {
 					}
 					{
 						int _value = 12;
-						BlockPos _pos = BlockPos.containing(x, y, z);
+						BlockPos _pos = new BlockPos(x, y, z);
 						BlockState _bs = world.getBlockState(_pos);
 						if (_bs.getBlock().getStateDefinition().getProperty("color") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 							world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -746,7 +746,7 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -754,9 +754,9 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 3)).getItem() == Items.BLUE_DYE) {
+				}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == Items.BLUE_DYE) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 2;
 							final ItemStack _setstack = new ItemStack(PokefoodModItems.CRYSTALIZED_SUGAR_12.get());
@@ -768,7 +768,7 @@ public class SugarMelterCookingProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, BlockPos.containing(x, y, z), 2));
+							}.getAmount(world, new BlockPos(x, y, z), 2));
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 								if (capability instanceof IItemHandlerModifiable)
 									((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -776,7 +776,7 @@ public class SugarMelterCookingProcedure {
 						}
 					}
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 3;
 							final int _amount = 1;
@@ -791,7 +791,7 @@ public class SugarMelterCookingProcedure {
 					}
 					{
 						int _value = 13;
-						BlockPos _pos = BlockPos.containing(x, y, z);
+						BlockPos _pos = new BlockPos(x, y, z);
 						BlockState _bs = world.getBlockState(_pos);
 						if (_bs.getBlock().getStateDefinition().getProperty("color") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 							world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -804,7 +804,7 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -812,9 +812,9 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 3)).getItem() == Items.PURPLE_DYE) {
+				}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == Items.PURPLE_DYE) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 2;
 							final ItemStack _setstack = new ItemStack(PokefoodModItems.CRYSTALIZED_SUGAR_13.get());
@@ -826,7 +826,7 @@ public class SugarMelterCookingProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, BlockPos.containing(x, y, z), 2));
+							}.getAmount(world, new BlockPos(x, y, z), 2));
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 								if (capability instanceof IItemHandlerModifiable)
 									((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -834,7 +834,7 @@ public class SugarMelterCookingProcedure {
 						}
 					}
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 3;
 							final int _amount = 1;
@@ -849,7 +849,7 @@ public class SugarMelterCookingProcedure {
 					}
 					{
 						int _value = 14;
-						BlockPos _pos = BlockPos.containing(x, y, z);
+						BlockPos _pos = new BlockPos(x, y, z);
 						BlockState _bs = world.getBlockState(_pos);
 						if (_bs.getBlock().getStateDefinition().getProperty("color") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 							world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -862,7 +862,7 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -870,9 +870,9 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 3)).getItem() == Items.MAGENTA_DYE) {
+				}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == Items.MAGENTA_DYE) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 2;
 							final ItemStack _setstack = new ItemStack(PokefoodModItems.CRYSTALIZED_SUGAR_14.get());
@@ -884,7 +884,7 @@ public class SugarMelterCookingProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, BlockPos.containing(x, y, z), 2));
+							}.getAmount(world, new BlockPos(x, y, z), 2));
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 								if (capability instanceof IItemHandlerModifiable)
 									((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -892,7 +892,7 @@ public class SugarMelterCookingProcedure {
 						}
 					}
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 3;
 							final int _amount = 1;
@@ -907,7 +907,7 @@ public class SugarMelterCookingProcedure {
 					}
 					{
 						int _value = 15;
-						BlockPos _pos = BlockPos.containing(x, y, z);
+						BlockPos _pos = new BlockPos(x, y, z);
 						BlockState _bs = world.getBlockState(_pos);
 						if (_bs.getBlock().getStateDefinition().getProperty("color") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 							world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -920,7 +920,7 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == Items.SUGAR && (new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -928,9 +928,9 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 3)).getItem() == Items.PINK_DYE) {
+				}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == Items.PINK_DYE) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 2;
 							final ItemStack _setstack = new ItemStack(PokefoodModItems.CRYSTALIZED_SUGAR_15.get());
@@ -942,7 +942,7 @@ public class SugarMelterCookingProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, BlockPos.containing(x, y, z), 2));
+							}.getAmount(world, new BlockPos(x, y, z), 2));
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 								if (capability instanceof IItemHandlerModifiable)
 									((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -950,7 +950,7 @@ public class SugarMelterCookingProcedure {
 						}
 					}
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 3;
 							final int _amount = 1;
@@ -965,7 +965,7 @@ public class SugarMelterCookingProcedure {
 					}
 					{
 						int _value = 16;
-						BlockPos _pos = BlockPos.containing(x, y, z);
+						BlockPos _pos = new BlockPos(x, y, z);
 						BlockState _bs = world.getBlockState(_pos);
 						if (_bs.getBlock().getStateDefinition().getProperty("color") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 							world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -982,10 +982,10 @@ public class SugarMelterCookingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 						return _retval.get();
 					}
-				}.getAmount(world, BlockPos.containing(x, y, z), 0) > 0) {
+				}.getAmount(world, new BlockPos(x, y, z), 0) > 0) {
 					time = 0;
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 0;
 							final int _amount = 1;
@@ -1001,7 +1001,7 @@ public class SugarMelterCookingProcedure {
 				} else {
 					time = 0;
 					{
-						BlockPos _pos = BlockPos.containing(x, y, z);
+						BlockPos _pos = new BlockPos(x, y, z);
 						BlockState _bs = world.getBlockState(_pos);
 						if (_bs.getBlock().getStateDefinition().getProperty("lit") instanceof BooleanProperty _booleanProp)
 							world.setBlock(_pos, _bs.setValue(_booleanProp, false), 3);
@@ -1009,7 +1009,7 @@ public class SugarMelterCookingProcedure {
 				}
 			}
 			if (!world.isClientSide()) {
-				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockPos _bp = new BlockPos(x, y, z);
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)

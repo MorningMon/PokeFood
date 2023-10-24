@@ -1,12 +1,10 @@
 {
-  "_fv": 47,
+  "_fv": 43,
   "_type": "item",
   "definition": {
     "renderType": 0,
     "texture": "crepe_dough_bucket",
     "customModelName": "Normal",
-    "customProperties": {},
-    "states": [],
     "name": "Crepe Dough Bucket",
     "rarity": "COMMON",
     "creativeTab": {

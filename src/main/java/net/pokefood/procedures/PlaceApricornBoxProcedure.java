@@ -50,15 +50,15 @@ public class PlaceApricornBoxProcedure {
 		double nbItemInSlot = 0;
 		ItemStack itemInSlot = ItemStack.EMPTY;
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModItems.APRICORN_BOX_ITEM_D.get()
-				&& (world.getBlockState(BlockPos.containing(x, y + 1, z))).is(BlockTags.create(new ResourceLocation("forge:replaceable_blocks"))) && entity.isShiftKeyDown()) {
+				&& (world.getBlockState(new BlockPos(x, y + 1, z))).is(BlockTags.create(new ResourceLocation("forge:replaceable_blocks"))) && entity.isShiftKeyDown()) {
 			if (entity instanceof Player _player)
 				_player.closeContainer();
 			if (entity instanceof LivingEntity _entity)
 				_entity.swing(InteractionHand.MAIN_HAND, true);
-			world.setBlock(BlockPos.containing(x, y + 1, z), PokefoodModBlocks.APRICORN_BOX_D.get().defaultBlockState(), 3);
+			world.setBlock(new BlockPos(x, y + 1, z), PokefoodModBlocks.APRICORN_BOX_D.get().defaultBlockState(), 3);
 			{
 				Direction _dir = ((entity.getDirection()).getOpposite());
-				BlockPos _pos = BlockPos.containing(x, y + 1, z);
+				BlockPos _pos = new BlockPos(x, y + 1, z);
 				BlockState _bs = world.getBlockState(_pos);
 				Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
 				if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(_dir)) {
@@ -80,7 +80,7 @@ public class PlaceApricornBoxProcedure {
 						return _retval.get();
 					}
 				}.getItemStack((int) slot, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)));
-				nbItemInSlot = (new Object() {
+				nbItemInSlot = ((new Object() {
 					public ItemStack getItemStack(int sltid, ItemStack _isc) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -88,9 +88,9 @@ public class PlaceApricornBoxProcedure {
 						});
 						return _retval.get();
 					}
-				}.getItemStack((int) slot, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY))).getCount();
+				}.getItemStack((int) slot, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)))).getCount();
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y + 1, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y + 1, z));
 					if (_ent != null) {
 						final int _slotid = (int) slot;
 						final ItemStack _setstack = itemInSlot;
@@ -111,15 +111,15 @@ public class PlaceApricornBoxProcedure {
 					_player.getInventory().setChanged();
 			}
 		} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModItems.APRICORN_BOX_ITEM_B.get()
-				&& (world.getBlockState(BlockPos.containing(x, y + 1, z))).is(BlockTags.create(new ResourceLocation("forge:replaceable_blocks"))) && entity.isShiftKeyDown()) {
+				&& (world.getBlockState(new BlockPos(x, y + 1, z))).is(BlockTags.create(new ResourceLocation("forge:replaceable_blocks"))) && entity.isShiftKeyDown()) {
 			if (entity instanceof Player _player)
 				_player.closeContainer();
 			if (entity instanceof LivingEntity _entity)
 				_entity.swing(InteractionHand.MAIN_HAND, true);
-			world.setBlock(BlockPos.containing(x, y + 1, z), PokefoodModBlocks.APRICORN_BOX_B.get().defaultBlockState(), 3);
+			world.setBlock(new BlockPos(x, y + 1, z), PokefoodModBlocks.APRICORN_BOX_B.get().defaultBlockState(), 3);
 			{
 				Direction _dir = ((entity.getDirection()).getOpposite());
-				BlockPos _pos = BlockPos.containing(x, y + 1, z);
+				BlockPos _pos = new BlockPos(x, y + 1, z);
 				BlockState _bs = world.getBlockState(_pos);
 				Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
 				if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(_dir)) {
@@ -141,7 +141,7 @@ public class PlaceApricornBoxProcedure {
 						return _retval.get();
 					}
 				}.getItemStack((int) slot, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)));
-				nbItemInSlot = (new Object() {
+				nbItemInSlot = ((new Object() {
 					public ItemStack getItemStack(int sltid, ItemStack _isc) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -149,9 +149,9 @@ public class PlaceApricornBoxProcedure {
 						});
 						return _retval.get();
 					}
-				}.getItemStack((int) slot, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY))).getCount();
+				}.getItemStack((int) slot, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)))).getCount();
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y + 1, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y + 1, z));
 					if (_ent != null) {
 						final int _slotid = (int) slot;
 						final ItemStack _setstack = itemInSlot;
@@ -172,15 +172,15 @@ public class PlaceApricornBoxProcedure {
 					_player.getInventory().setChanged();
 			}
 		} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModItems.APRICORN_BOX_ITEM_G.get()
-				&& (world.getBlockState(BlockPos.containing(x, y + 1, z))).is(BlockTags.create(new ResourceLocation("forge:replaceable_blocks"))) && entity.isShiftKeyDown()) {
+				&& (world.getBlockState(new BlockPos(x, y + 1, z))).is(BlockTags.create(new ResourceLocation("forge:replaceable_blocks"))) && entity.isShiftKeyDown()) {
 			if (entity instanceof Player _player)
 				_player.closeContainer();
 			if (entity instanceof LivingEntity _entity)
 				_entity.swing(InteractionHand.MAIN_HAND, true);
-			world.setBlock(BlockPos.containing(x, y + 1, z), PokefoodModBlocks.APRICORN_BOX_G.get().defaultBlockState(), 3);
+			world.setBlock(new BlockPos(x, y + 1, z), PokefoodModBlocks.APRICORN_BOX_G.get().defaultBlockState(), 3);
 			{
 				Direction _dir = ((entity.getDirection()).getOpposite());
-				BlockPos _pos = BlockPos.containing(x, y + 1, z);
+				BlockPos _pos = new BlockPos(x, y + 1, z);
 				BlockState _bs = world.getBlockState(_pos);
 				Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
 				if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(_dir)) {
@@ -202,7 +202,7 @@ public class PlaceApricornBoxProcedure {
 						return _retval.get();
 					}
 				}.getItemStack((int) slot, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)));
-				nbItemInSlot = (new Object() {
+				nbItemInSlot = ((new Object() {
 					public ItemStack getItemStack(int sltid, ItemStack _isc) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -210,9 +210,9 @@ public class PlaceApricornBoxProcedure {
 						});
 						return _retval.get();
 					}
-				}.getItemStack((int) slot, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY))).getCount();
+				}.getItemStack((int) slot, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)))).getCount();
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y + 1, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y + 1, z));
 					if (_ent != null) {
 						final int _slotid = (int) slot;
 						final ItemStack _setstack = itemInSlot;
@@ -233,15 +233,15 @@ public class PlaceApricornBoxProcedure {
 					_player.getInventory().setChanged();
 			}
 		} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModItems.APRICORN_BOX_ITEM_Y.get()
-				&& (world.getBlockState(BlockPos.containing(x, y + 1, z))).is(BlockTags.create(new ResourceLocation("forge:replaceable_blocks"))) && entity.isShiftKeyDown()) {
+				&& (world.getBlockState(new BlockPos(x, y + 1, z))).is(BlockTags.create(new ResourceLocation("forge:replaceable_blocks"))) && entity.isShiftKeyDown()) {
 			if (entity instanceof Player _player)
 				_player.closeContainer();
 			if (entity instanceof LivingEntity _entity)
 				_entity.swing(InteractionHand.MAIN_HAND, true);
-			world.setBlock(BlockPos.containing(x, y + 1, z), PokefoodModBlocks.APRICORN_BOX_Y.get().defaultBlockState(), 3);
+			world.setBlock(new BlockPos(x, y + 1, z), PokefoodModBlocks.APRICORN_BOX_Y.get().defaultBlockState(), 3);
 			{
 				Direction _dir = ((entity.getDirection()).getOpposite());
-				BlockPos _pos = BlockPos.containing(x, y + 1, z);
+				BlockPos _pos = new BlockPos(x, y + 1, z);
 				BlockState _bs = world.getBlockState(_pos);
 				Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
 				if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(_dir)) {
@@ -263,7 +263,7 @@ public class PlaceApricornBoxProcedure {
 						return _retval.get();
 					}
 				}.getItemStack((int) slot, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)));
-				nbItemInSlot = (new Object() {
+				nbItemInSlot = ((new Object() {
 					public ItemStack getItemStack(int sltid, ItemStack _isc) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -271,9 +271,9 @@ public class PlaceApricornBoxProcedure {
 						});
 						return _retval.get();
 					}
-				}.getItemStack((int) slot, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY))).getCount();
+				}.getItemStack((int) slot, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)))).getCount();
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y + 1, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y + 1, z));
 					if (_ent != null) {
 						final int _slotid = (int) slot;
 						final ItemStack _setstack = itemInSlot;
@@ -294,15 +294,15 @@ public class PlaceApricornBoxProcedure {
 					_player.getInventory().setChanged();
 			}
 		} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModItems.APRICORN_BOX_ITEM_R.get()
-				&& (world.getBlockState(BlockPos.containing(x, y + 1, z))).is(BlockTags.create(new ResourceLocation("forge:replaceable_blocks"))) && entity.isShiftKeyDown()) {
+				&& (world.getBlockState(new BlockPos(x, y + 1, z))).is(BlockTags.create(new ResourceLocation("forge:replaceable_blocks"))) && entity.isShiftKeyDown()) {
 			if (entity instanceof Player _player)
 				_player.closeContainer();
 			if (entity instanceof LivingEntity _entity)
 				_entity.swing(InteractionHand.MAIN_HAND, true);
-			world.setBlock(BlockPos.containing(x, y + 1, z), PokefoodModBlocks.APRICORN_BOX_R.get().defaultBlockState(), 3);
+			world.setBlock(new BlockPos(x, y + 1, z), PokefoodModBlocks.APRICORN_BOX_R.get().defaultBlockState(), 3);
 			{
 				Direction _dir = ((entity.getDirection()).getOpposite());
-				BlockPos _pos = BlockPos.containing(x, y + 1, z);
+				BlockPos _pos = new BlockPos(x, y + 1, z);
 				BlockState _bs = world.getBlockState(_pos);
 				Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
 				if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(_dir)) {
@@ -324,7 +324,7 @@ public class PlaceApricornBoxProcedure {
 						return _retval.get();
 					}
 				}.getItemStack((int) slot, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)));
-				nbItemInSlot = (new Object() {
+				nbItemInSlot = ((new Object() {
 					public ItemStack getItemStack(int sltid, ItemStack _isc) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -332,9 +332,9 @@ public class PlaceApricornBoxProcedure {
 						});
 						return _retval.get();
 					}
-				}.getItemStack((int) slot, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY))).getCount();
+				}.getItemStack((int) slot, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)))).getCount();
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y + 1, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y + 1, z));
 					if (_ent != null) {
 						final int _slotid = (int) slot;
 						final ItemStack _setstack = itemInSlot;
@@ -355,15 +355,15 @@ public class PlaceApricornBoxProcedure {
 					_player.getInventory().setChanged();
 			}
 		} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModItems.APRICORN_BOX_ITEM_P.get()
-				&& (world.getBlockState(BlockPos.containing(x, y + 1, z))).is(BlockTags.create(new ResourceLocation("forge:replaceable_blocks"))) && entity.isShiftKeyDown()) {
+				&& (world.getBlockState(new BlockPos(x, y + 1, z))).is(BlockTags.create(new ResourceLocation("forge:replaceable_blocks"))) && entity.isShiftKeyDown()) {
 			if (entity instanceof Player _player)
 				_player.closeContainer();
 			if (entity instanceof LivingEntity _entity)
 				_entity.swing(InteractionHand.MAIN_HAND, true);
-			world.setBlock(BlockPos.containing(x, y + 1, z), PokefoodModBlocks.APRICORN_BOX_P.get().defaultBlockState(), 3);
+			world.setBlock(new BlockPos(x, y + 1, z), PokefoodModBlocks.APRICORN_BOX_P.get().defaultBlockState(), 3);
 			{
 				Direction _dir = ((entity.getDirection()).getOpposite());
-				BlockPos _pos = BlockPos.containing(x, y + 1, z);
+				BlockPos _pos = new BlockPos(x, y + 1, z);
 				BlockState _bs = world.getBlockState(_pos);
 				Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
 				if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(_dir)) {
@@ -385,7 +385,7 @@ public class PlaceApricornBoxProcedure {
 						return _retval.get();
 					}
 				}.getItemStack((int) slot, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)));
-				nbItemInSlot = (new Object() {
+				nbItemInSlot = ((new Object() {
 					public ItemStack getItemStack(int sltid, ItemStack _isc) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -393,9 +393,9 @@ public class PlaceApricornBoxProcedure {
 						});
 						return _retval.get();
 					}
-				}.getItemStack((int) slot, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY))).getCount();
+				}.getItemStack((int) slot, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)))).getCount();
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y + 1, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y + 1, z));
 					if (_ent != null) {
 						final int _slotid = (int) slot;
 						final ItemStack _setstack = itemInSlot;
@@ -416,15 +416,15 @@ public class PlaceApricornBoxProcedure {
 					_player.getInventory().setChanged();
 			}
 		} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModItems.APRICORN_BOX_ITEM_W.get()
-				&& (world.getBlockState(BlockPos.containing(x, y + 1, z))).is(BlockTags.create(new ResourceLocation("forge:replaceable_blocks"))) && entity.isShiftKeyDown()) {
+				&& (world.getBlockState(new BlockPos(x, y + 1, z))).is(BlockTags.create(new ResourceLocation("forge:replaceable_blocks"))) && entity.isShiftKeyDown()) {
 			if (entity instanceof Player _player)
 				_player.closeContainer();
 			if (entity instanceof LivingEntity _entity)
 				_entity.swing(InteractionHand.MAIN_HAND, true);
-			world.setBlock(BlockPos.containing(x, y + 1, z), PokefoodModBlocks.APRICORN_BOX_W.get().defaultBlockState(), 3);
+			world.setBlock(new BlockPos(x, y + 1, z), PokefoodModBlocks.APRICORN_BOX_W.get().defaultBlockState(), 3);
 			{
 				Direction _dir = ((entity.getDirection()).getOpposite());
-				BlockPos _pos = BlockPos.containing(x, y + 1, z);
+				BlockPos _pos = new BlockPos(x, y + 1, z);
 				BlockState _bs = world.getBlockState(_pos);
 				Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
 				if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(_dir)) {
@@ -446,7 +446,7 @@ public class PlaceApricornBoxProcedure {
 						return _retval.get();
 					}
 				}.getItemStack((int) slot, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)));
-				nbItemInSlot = (new Object() {
+				nbItemInSlot = ((new Object() {
 					public ItemStack getItemStack(int sltid, ItemStack _isc) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -454,9 +454,9 @@ public class PlaceApricornBoxProcedure {
 						});
 						return _retval.get();
 					}
-				}.getItemStack((int) slot, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY))).getCount();
+				}.getItemStack((int) slot, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)))).getCount();
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y + 1, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y + 1, z));
 					if (_ent != null) {
 						final int _slotid = (int) slot;
 						final ItemStack _setstack = itemInSlot;

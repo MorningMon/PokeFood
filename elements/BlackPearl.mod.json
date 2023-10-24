@@ -1,12 +1,10 @@
 {
-  "_fv": 47,
+  "_fv": 43,
   "_type": "item",
   "definition": {
     "renderType": 0,
     "texture": "black_pearl",
     "customModelName": "Normal",
-    "customProperties": {},
-    "states": [],
     "name": "Black Pearl",
     "rarity": "COMMON",
     "creativeTab": {

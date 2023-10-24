@@ -14,7 +14,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.inventory.Slot;
-import net.minecraft.world.inventory.ContainerLevelAccess;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.player.Inventory;
@@ -32,18 +31,14 @@ public class KegGUIMenu extends AbstractContainerMenu implements Supplier<Map<In
 	public final Level world;
 	public final Player entity;
 	public int x, y, z;
-	private ContainerLevelAccess access = ContainerLevelAccess.NULL;
 	private IItemHandler internal;
 	private final Map<Integer, Slot> customSlots = new HashMap<>();
 	private boolean bound = false;
-	private Supplier<Boolean> boundItemMatcher = null;
-	private Entity boundEntity = null;
-	private BlockEntity boundBlockEntity = null;
 
 	public KegGUIMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
 		super(PokefoodModMenus.KEG_GUI.get(), id);
 		this.entity = inv.player;
-		this.world = inv.player.level();
+		this.world = inv.player.level;
 		this.internal = new ItemStackHandler(8);
 		BlockPos pos = null;
 		if (extraData != null) {
@@ -51,37 +46,38 @@ public class KegGUIMenu extends AbstractContainerMenu implements Supplier<Map<In
 			this.x = pos.getX();
 			this.y = pos.getY();
 			this.z = pos.getZ();
-			access = ContainerLevelAccess.create(world, pos);
 		}
 		if (pos != null) {
 			if (extraData.readableBytes() == 1) { // bound to item
 				byte hand = extraData.readByte();
-				ItemStack itemstack = hand == 0 ? this.entity.getMainHandItem() : this.entity.getOffhandItem();
-				this.boundItemMatcher = () -> itemstack == (hand == 0 ? this.entity.getMainHandItem() : this.entity.getOffhandItem());
+				ItemStack itemstack;
+				if (hand == 0)
+					itemstack = this.entity.getMainHandItem();
+				else
+					itemstack = this.entity.getOffhandItem();
 				itemstack.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 					this.internal = capability;
 					this.bound = true;
 				});
-			} else if (extraData.readableBytes() > 1) { // bound to entity
+			} else if (extraData.readableBytes() > 1) {
 				extraData.readByte(); // drop padding
-				boundEntity = world.getEntity(extraData.readVarInt());
-				if (boundEntity != null)
-					boundEntity.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+				Entity entity = world.getEntity(extraData.readVarInt());
+				if (entity != null)
+					entity.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 						this.internal = capability;
 						this.bound = true;
 					});
 			} else { // might be bound to block
-				boundBlockEntity = this.world.getBlockEntity(pos);
-				if (boundBlockEntity != null)
-					boundBlockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
+				BlockEntity ent = inv.player != null ? inv.player.level.getBlockEntity(pos) : null;
+				if (ent != null) {
+					ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 						this.internal = capability;
 						this.bound = true;
 					});
+				}
 			}
 		}
 		this.customSlots.put(0, this.addSlot(new SlotItemHandler(internal, 0, 79, 35) {
-			private final int slot = 0;
-
 			@Override
 			public boolean mayPlace(ItemStack stack) {
 				return (
@@ -100,8 +96,6 @@ public class KegGUIMenu extends AbstractContainerMenu implements Supplier<Map<In
 			}
 		}));
 		this.customSlots.put(1, this.addSlot(new SlotItemHandler(internal, 1, 52, 17) {
-			private final int slot = 1;
-
 			@Override
 			public boolean mayPlace(ItemStack stack) {
 				return (
@@ -127,8 +121,6 @@ public class KegGUIMenu extends AbstractContainerMenu implements Supplier<Map<In
 			}
 		}));
 		this.customSlots.put(2, this.addSlot(new SlotItemHandler(internal, 2, 79, 8) {
-			private final int slot = 2;
-
 			@Override
 			public boolean mayPlace(ItemStack stack) {
 				return (
@@ -154,8 +146,6 @@ public class KegGUIMenu extends AbstractContainerMenu implements Supplier<Map<In
 			}
 		}));
 		this.customSlots.put(3, this.addSlot(new SlotItemHandler(internal, 3, 106, 17) {
-			private final int slot = 3;
-
 			@Override
 			public boolean mayPlace(ItemStack stack) {
 				return (
@@ -165,8 +155,6 @@ public class KegGUIMenu extends AbstractContainerMenu implements Supplier<Map<In
 			}
 		}));
 		this.customSlots.put(4, this.addSlot(new SlotItemHandler(internal, 4, 52, 53) {
-			private final int slot = 4;
-
 			@Override
 			public boolean mayPlace(ItemStack stack) {
 				return (
@@ -189,11 +177,10 @@ public class KegGUIMenu extends AbstractContainerMenu implements Supplier<Map<In
 					|| Items.MELON_SEEDS == stack.getItem()
 					|| Items.BEETROOT_SEEDS == stack.getItem()
 					);
+
 			}
 		}));
 		this.customSlots.put(5, this.addSlot(new SlotItemHandler(internal, 5, 79, 62) {
-			private final int slot = 5;
-
 			@Override
 			public boolean mayPlace(ItemStack stack) {
 				return (
@@ -216,11 +203,10 @@ public class KegGUIMenu extends AbstractContainerMenu implements Supplier<Map<In
 					|| Items.MELON_SEEDS == stack.getItem()
 					|| Items.BEETROOT_SEEDS == stack.getItem()
 					);
+
 			}
 		}));
 		this.customSlots.put(6, this.addSlot(new SlotItemHandler(internal, 6, 106, 53) {
-			private final int slot = 6;
-
 			@Override
 			public boolean mayPlace(ItemStack stack) {
 				return (
@@ -243,11 +229,10 @@ public class KegGUIMenu extends AbstractContainerMenu implements Supplier<Map<In
 					|| Items.MELON_SEEDS == stack.getItem()
 					|| Items.BEETROOT_SEEDS == stack.getItem()
 					);
+
 			}
 		}));
 		this.customSlots.put(7, this.addSlot(new SlotItemHandler(internal, 7, 142, 35) {
-			private final int slot = 7;
-
 			@Override
 			public boolean mayPlace(ItemStack stack) {
 				return false;
@@ -262,14 +247,6 @@ public class KegGUIMenu extends AbstractContainerMenu implements Supplier<Map<In
 
 	@Override
 	public boolean stillValid(Player player) {
-		if (this.bound) {
-			if (this.boundItemMatcher != null)
-				return this.boundItemMatcher.get();
-			else if (this.boundBlockEntity != null)
-				return AbstractContainerMenu.stillValid(this.access, player, this.boundBlockEntity.getBlockState().getBlock());
-			else if (this.boundEntity != null)
-				return this.boundEntity.isAlive();
-		}
 		return true;
 	}
 
@@ -363,9 +340,9 @@ public class KegGUIMenu extends AbstractContainerMenu implements Supplier<Map<In
 				ItemStack itemstack1 = slot1.getItem();
 				if (itemstack1.isEmpty() && slot1.mayPlace(p_38904_)) {
 					if (p_38904_.getCount() > slot1.getMaxStackSize()) {
-						slot1.setByPlayer(p_38904_.split(slot1.getMaxStackSize()));
+						slot1.set(p_38904_.split(slot1.getMaxStackSize()));
 					} else {
-						slot1.setByPlayer(p_38904_.split(p_38904_.getCount()));
+						slot1.set(p_38904_.split(p_38904_.getCount()));
 					}
 					slot1.setChanged();
 					flag = true;

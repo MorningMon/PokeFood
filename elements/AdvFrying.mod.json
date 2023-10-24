@@ -1,9 +1,9 @@
 {
-  "_fv": 47,
+  "_fv": 43,
   "_type": "achievement",
   "definition": {
     "achievementName": "Crunchy !",
-    "achievementDescription": "Just fry something already !",
+    "achievementDescription": "Fry some pokemon and show how sorry you aren't",
     "achievementIcon": {
       "value": "CUSTOM:FriedTail"
     },

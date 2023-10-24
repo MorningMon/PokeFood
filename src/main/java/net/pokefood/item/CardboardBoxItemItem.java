@@ -4,6 +4,7 @@ package net.pokefood.item;
 import net.pokefood.world.inventory.CardboardBoxItemGUIMenu;
 import net.pokefood.procedures.PlaceCardboardBoxProcedure;
 import net.pokefood.item.inventory.CardboardBoxItemInventoryCapability;
+import net.pokefood.init.PokefoodModTabs;
 
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.items.ItemStackHandler;
@@ -36,7 +37,7 @@ import io.netty.buffer.Unpooled;
 
 public class CardboardBoxItemItem extends Item {
 	public CardboardBoxItemItem() {
-		super(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON));
+		super(new Item.Properties().tab(PokefoodModTabs.TAB_POKE_FOOD_OTHERS).stacksTo(1).rarity(Rarity.COMMON));
 	}
 
 	@Override
@@ -88,8 +89,9 @@ public class CardboardBoxItemItem extends Item {
 
 	@Override
 	public CompoundTag getShareTag(ItemStack stack) {
-		CompoundTag nbt = stack.getOrCreateTag();
-		stack.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> nbt.put("Inventory", ((ItemStackHandler) capability).serializeNBT()));
+		CompoundTag nbt = super.getShareTag(stack);
+		if (nbt != null)
+			stack.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> nbt.put("Inventory", ((ItemStackHandler) capability).serializeNBT()));
 		return nbt;
 	}
 

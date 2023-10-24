@@ -1,12 +1,10 @@
 {
-  "_fv": 47,
+  "_fv": 43,
   "_type": "item",
   "definition": {
     "renderType": 0,
     "texture": "roasted_leaf",
     "customModelName": "Normal",
-    "customProperties": {},
-    "states": [],
     "name": "Roasted Green Tea Leave",
     "rarity": "COMMON",
     "creativeTab": {

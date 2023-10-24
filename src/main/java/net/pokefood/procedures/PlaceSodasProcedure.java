@@ -33,6 +33,8 @@ import net.minecraft.advancements.Advancement;
 
 import javax.annotation.Nullable;
 
+import java.util.Iterator;
+
 @Mod.EventBusSubscriber
 public class PlaceSodasProcedure {
 	@SubscribeEvent
@@ -49,14 +51,14 @@ public class PlaceSodasProcedure {
 	private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z, Entity entity) {
 		if (entity == null)
 			return;
-		if (entity.isShiftKeyDown() == true && (world.getBlockState(BlockPos.containing(x, y + 1, z))).is(BlockTags.create(new ResourceLocation("forge:replaceable_blocks")))) {
+		if (entity.isShiftKeyDown() == true && (world.getBlockState(new BlockPos(x, y + 1, z))).is(BlockTags.create(new ResourceLocation("forge:replaceable_blocks")))) {
 			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModItems.SODA_POP.get()
 					|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == ForgeRegistries.ITEMS.getValue(new ResourceLocation("cobblemon:soda_pop"))
 							&& !((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Blocks.AIR.asItem())) {
-				world.setBlock(BlockPos.containing(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_POP_1.get().defaultBlockState(), 3);
+				world.setBlock(new BlockPos(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_POP_1.get().defaultBlockState(), 3);
 				{
 					Direction _dir = ((entity.getDirection()).getOpposite());
-					BlockPos _pos = BlockPos.containing(x, y + 1, z);
+					BlockPos _pos = new BlockPos(x, y + 1, z);
 					BlockState _bs = world.getBlockState(_pos);
 					Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
 					if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(_dir)) {
@@ -69,7 +71,7 @@ public class PlaceSodasProcedure {
 				}
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1);
+						_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1);
 					} else {
 						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1, false);
 					}
@@ -78,7 +80,7 @@ public class PlaceSodasProcedure {
 					public boolean checkGamemode(Entity _ent) {
 						if (_ent instanceof ServerPlayer _serverPlayer) {
 							return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-						} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+						} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
 							return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
 									&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
 						}
@@ -94,15 +96,16 @@ public class PlaceSodasProcedure {
 					Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("pokefood:adv_display_soda"));
 					AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 					if (!_ap.isDone()) {
-						for (String criteria : _ap.getRemainingCriteria())
-							_player.getAdvancements().award(_adv, criteria);
+						Iterator _iterator = _ap.getRemainingCriteria().iterator();
+						while (_iterator.hasNext())
+							_player.getAdvancements().award(_adv, (String) _iterator.next());
 					}
 				}
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModItems.SODA_HIGH_TEA.get()) {
-				world.setBlock(BlockPos.containing(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_TEA_1.get().defaultBlockState(), 3);
+				world.setBlock(new BlockPos(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_TEA_1.get().defaultBlockState(), 3);
 				{
 					Direction _dir = ((entity.getDirection()).getOpposite());
-					BlockPos _pos = BlockPos.containing(x, y + 1, z);
+					BlockPos _pos = new BlockPos(x, y + 1, z);
 					BlockState _bs = world.getBlockState(_pos);
 					Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
 					if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(_dir)) {
@@ -115,7 +118,7 @@ public class PlaceSodasProcedure {
 				}
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1);
+						_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1);
 					} else {
 						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1, false);
 					}
@@ -124,7 +127,7 @@ public class PlaceSodasProcedure {
 					public boolean checkGamemode(Entity _ent) {
 						if (_ent instanceof ServerPlayer _serverPlayer) {
 							return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-						} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+						} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
 							return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
 									&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
 						}
@@ -140,15 +143,16 @@ public class PlaceSodasProcedure {
 					Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("pokefood:adv_display_soda"));
 					AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 					if (!_ap.isDone()) {
-						for (String criteria : _ap.getRemainingCriteria())
-							_player.getAdvancements().award(_adv, criteria);
+						Iterator _iterator = _ap.getRemainingCriteria().iterator();
+						while (_iterator.hasNext())
+							_player.getAdvancements().award(_adv, (String) _iterator.next());
 					}
 				}
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModItems.SODA_PUNCH_TEA.get()) {
-				world.setBlock(BlockPos.containing(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_TEA_BLACK_1.get().defaultBlockState(), 3);
+				world.setBlock(new BlockPos(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_TEA_BLACK_1.get().defaultBlockState(), 3);
 				{
 					Direction _dir = ((entity.getDirection()).getOpposite());
-					BlockPos _pos = BlockPos.containing(x, y + 1, z);
+					BlockPos _pos = new BlockPos(x, y + 1, z);
 					BlockState _bs = world.getBlockState(_pos);
 					Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
 					if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(_dir)) {
@@ -161,7 +165,7 @@ public class PlaceSodasProcedure {
 				}
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1);
+						_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1);
 					} else {
 						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1, false);
 					}
@@ -170,7 +174,7 @@ public class PlaceSodasProcedure {
 					public boolean checkGamemode(Entity _ent) {
 						if (_ent instanceof ServerPlayer _serverPlayer) {
 							return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-						} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+						} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
 							return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
 									&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
 						}
@@ -186,15 +190,16 @@ public class PlaceSodasProcedure {
 					Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("pokefood:adv_display_soda"));
 					AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 					if (!_ap.isDone()) {
-						for (String criteria : _ap.getRemainingCriteria())
-							_player.getAdvancements().award(_adv, criteria);
+						Iterator _iterator = _ap.getRemainingCriteria().iterator();
+						while (_iterator.hasNext())
+							_player.getAdvancements().award(_adv, (String) _iterator.next());
 					}
 				}
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModItems.SODA_ROSINE_TEA.get()) {
-				world.setBlock(BlockPos.containing(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_TEA_ROSERADE_1.get().defaultBlockState(), 3);
+				world.setBlock(new BlockPos(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_TEA_ROSERADE_1.get().defaultBlockState(), 3);
 				{
 					Direction _dir = ((entity.getDirection()).getOpposite());
-					BlockPos _pos = BlockPos.containing(x, y + 1, z);
+					BlockPos _pos = new BlockPos(x, y + 1, z);
 					BlockState _bs = world.getBlockState(_pos);
 					Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
 					if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(_dir)) {
@@ -207,7 +212,7 @@ public class PlaceSodasProcedure {
 				}
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1);
+						_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1);
 					} else {
 						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1, false);
 					}
@@ -216,7 +221,7 @@ public class PlaceSodasProcedure {
 					public boolean checkGamemode(Entity _ent) {
 						if (_ent instanceof ServerPlayer _serverPlayer) {
 							return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-						} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+						} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
 							return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
 									&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
 						}
@@ -232,15 +237,16 @@ public class PlaceSodasProcedure {
 					Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("pokefood:adv_display_soda"));
 					AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 					if (!_ap.isDone()) {
-						for (String criteria : _ap.getRemainingCriteria())
-							_player.getAdvancements().award(_adv, criteria);
+						Iterator _iterator = _ap.getRemainingCriteria().iterator();
+						while (_iterator.hasNext())
+							_player.getAdvancements().award(_adv, (String) _iterator.next());
 					}
 				}
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModItems.SODA_POWER_LEMON.get()) {
-				world.setBlock(BlockPos.containing(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_LEMONADE_1.get().defaultBlockState(), 3);
+				world.setBlock(new BlockPos(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_LEMONADE_1.get().defaultBlockState(), 3);
 				{
 					Direction _dir = ((entity.getDirection()).getOpposite());
-					BlockPos _pos = BlockPos.containing(x, y + 1, z);
+					BlockPos _pos = new BlockPos(x, y + 1, z);
 					BlockState _bs = world.getBlockState(_pos);
 					Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
 					if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(_dir)) {
@@ -253,7 +259,7 @@ public class PlaceSodasProcedure {
 				}
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1);
+						_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1);
 					} else {
 						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1, false);
 					}
@@ -262,7 +268,7 @@ public class PlaceSodasProcedure {
 					public boolean checkGamemode(Entity _ent) {
 						if (_ent instanceof ServerPlayer _serverPlayer) {
 							return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-						} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+						} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
 							return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
 									&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
 						}
@@ -278,15 +284,16 @@ public class PlaceSodasProcedure {
 					Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("pokefood:adv_display_soda"));
 					AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 					if (!_ap.isDone()) {
-						for (String criteria : _ap.getRemainingCriteria())
-							_player.getAdvancements().award(_adv, criteria);
+						Iterator _iterator = _ap.getRemainingCriteria().iterator();
+						while (_iterator.hasNext())
+							_player.getAdvancements().award(_adv, (String) _iterator.next());
 					}
 				}
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModItems.SODA_APRI_D.get()) {
-				world.setBlock(BlockPos.containing(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_APRI_D_1.get().defaultBlockState(), 3);
+				world.setBlock(new BlockPos(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_APRI_D_1.get().defaultBlockState(), 3);
 				{
 					Direction _dir = ((entity.getDirection()).getOpposite());
-					BlockPos _pos = BlockPos.containing(x, y + 1, z);
+					BlockPos _pos = new BlockPos(x, y + 1, z);
 					BlockState _bs = world.getBlockState(_pos);
 					Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
 					if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(_dir)) {
@@ -299,7 +306,7 @@ public class PlaceSodasProcedure {
 				}
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1);
+						_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1);
 					} else {
 						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1, false);
 					}
@@ -308,7 +315,7 @@ public class PlaceSodasProcedure {
 					public boolean checkGamemode(Entity _ent) {
 						if (_ent instanceof ServerPlayer _serverPlayer) {
 							return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-						} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+						} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
 							return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
 									&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
 						}
@@ -324,15 +331,16 @@ public class PlaceSodasProcedure {
 					Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("pokefood:adv_display_soda"));
 					AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 					if (!_ap.isDone()) {
-						for (String criteria : _ap.getRemainingCriteria())
-							_player.getAdvancements().award(_adv, criteria);
+						Iterator _iterator = _ap.getRemainingCriteria().iterator();
+						while (_iterator.hasNext())
+							_player.getAdvancements().award(_adv, (String) _iterator.next());
 					}
 				}
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModItems.SODA_APRI_B.get()) {
-				world.setBlock(BlockPos.containing(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_APRI_B_1.get().defaultBlockState(), 3);
+				world.setBlock(new BlockPos(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_APRI_B_1.get().defaultBlockState(), 3);
 				{
 					Direction _dir = ((entity.getDirection()).getOpposite());
-					BlockPos _pos = BlockPos.containing(x, y + 1, z);
+					BlockPos _pos = new BlockPos(x, y + 1, z);
 					BlockState _bs = world.getBlockState(_pos);
 					Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
 					if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(_dir)) {
@@ -345,7 +353,7 @@ public class PlaceSodasProcedure {
 				}
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1);
+						_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1);
 					} else {
 						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1, false);
 					}
@@ -354,7 +362,7 @@ public class PlaceSodasProcedure {
 					public boolean checkGamemode(Entity _ent) {
 						if (_ent instanceof ServerPlayer _serverPlayer) {
 							return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-						} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+						} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
 							return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
 									&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
 						}
@@ -370,15 +378,16 @@ public class PlaceSodasProcedure {
 					Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("pokefood:adv_display_soda"));
 					AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 					if (!_ap.isDone()) {
-						for (String criteria : _ap.getRemainingCriteria())
-							_player.getAdvancements().award(_adv, criteria);
+						Iterator _iterator = _ap.getRemainingCriteria().iterator();
+						while (_iterator.hasNext())
+							_player.getAdvancements().award(_adv, (String) _iterator.next());
 					}
 				}
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModItems.SODA_APRI_G.get()) {
-				world.setBlock(BlockPos.containing(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_APRI_G_1.get().defaultBlockState(), 3);
+				world.setBlock(new BlockPos(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_APRI_G_1.get().defaultBlockState(), 3);
 				{
 					Direction _dir = ((entity.getDirection()).getOpposite());
-					BlockPos _pos = BlockPos.containing(x, y + 1, z);
+					BlockPos _pos = new BlockPos(x, y + 1, z);
 					BlockState _bs = world.getBlockState(_pos);
 					Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
 					if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(_dir)) {
@@ -391,7 +400,7 @@ public class PlaceSodasProcedure {
 				}
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1);
+						_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1);
 					} else {
 						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1, false);
 					}
@@ -400,7 +409,7 @@ public class PlaceSodasProcedure {
 					public boolean checkGamemode(Entity _ent) {
 						if (_ent instanceof ServerPlayer _serverPlayer) {
 							return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-						} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+						} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
 							return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
 									&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
 						}
@@ -416,15 +425,16 @@ public class PlaceSodasProcedure {
 					Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("pokefood:adv_display_soda"));
 					AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 					if (!_ap.isDone()) {
-						for (String criteria : _ap.getRemainingCriteria())
-							_player.getAdvancements().award(_adv, criteria);
+						Iterator _iterator = _ap.getRemainingCriteria().iterator();
+						while (_iterator.hasNext())
+							_player.getAdvancements().award(_adv, (String) _iterator.next());
 					}
 				}
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModItems.SODA_APRI_Y.get()) {
-				world.setBlock(BlockPos.containing(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_APRI_Y_1.get().defaultBlockState(), 3);
+				world.setBlock(new BlockPos(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_APRI_Y_1.get().defaultBlockState(), 3);
 				{
 					Direction _dir = ((entity.getDirection()).getOpposite());
-					BlockPos _pos = BlockPos.containing(x, y + 1, z);
+					BlockPos _pos = new BlockPos(x, y + 1, z);
 					BlockState _bs = world.getBlockState(_pos);
 					Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
 					if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(_dir)) {
@@ -437,7 +447,7 @@ public class PlaceSodasProcedure {
 				}
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1);
+						_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1);
 					} else {
 						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1, false);
 					}
@@ -446,7 +456,7 @@ public class PlaceSodasProcedure {
 					public boolean checkGamemode(Entity _ent) {
 						if (_ent instanceof ServerPlayer _serverPlayer) {
 							return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-						} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+						} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
 							return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
 									&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
 						}
@@ -462,15 +472,16 @@ public class PlaceSodasProcedure {
 					Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("pokefood:adv_display_soda"));
 					AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 					if (!_ap.isDone()) {
-						for (String criteria : _ap.getRemainingCriteria())
-							_player.getAdvancements().award(_adv, criteria);
+						Iterator _iterator = _ap.getRemainingCriteria().iterator();
+						while (_iterator.hasNext())
+							_player.getAdvancements().award(_adv, (String) _iterator.next());
 					}
 				}
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModItems.SODA_APRI_R.get()) {
-				world.setBlock(BlockPos.containing(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_APRI_R_1.get().defaultBlockState(), 3);
+				world.setBlock(new BlockPos(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_APRI_R_1.get().defaultBlockState(), 3);
 				{
 					Direction _dir = ((entity.getDirection()).getOpposite());
-					BlockPos _pos = BlockPos.containing(x, y + 1, z);
+					BlockPos _pos = new BlockPos(x, y + 1, z);
 					BlockState _bs = world.getBlockState(_pos);
 					Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
 					if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(_dir)) {
@@ -483,7 +494,7 @@ public class PlaceSodasProcedure {
 				}
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.NEUTRAL, 1, 1);
+						_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.NEUTRAL, 1, 1);
 					} else {
 						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.NEUTRAL, 1, 1, false);
 					}
@@ -492,7 +503,7 @@ public class PlaceSodasProcedure {
 					public boolean checkGamemode(Entity _ent) {
 						if (_ent instanceof ServerPlayer _serverPlayer) {
 							return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-						} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+						} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
 							return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
 									&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
 						}
@@ -508,15 +519,16 @@ public class PlaceSodasProcedure {
 					Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("pokefood:adv_display_soda"));
 					AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 					if (!_ap.isDone()) {
-						for (String criteria : _ap.getRemainingCriteria())
-							_player.getAdvancements().award(_adv, criteria);
+						Iterator _iterator = _ap.getRemainingCriteria().iterator();
+						while (_iterator.hasNext())
+							_player.getAdvancements().award(_adv, (String) _iterator.next());
 					}
 				}
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModItems.SODA_APRI_P.get()) {
-				world.setBlock(BlockPos.containing(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_APRI_P_1.get().defaultBlockState(), 3);
+				world.setBlock(new BlockPos(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_APRI_P_1.get().defaultBlockState(), 3);
 				{
 					Direction _dir = ((entity.getDirection()).getOpposite());
-					BlockPos _pos = BlockPos.containing(x, y + 1, z);
+					BlockPos _pos = new BlockPos(x, y + 1, z);
 					BlockState _bs = world.getBlockState(_pos);
 					Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
 					if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(_dir)) {
@@ -529,7 +541,7 @@ public class PlaceSodasProcedure {
 				}
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1);
+						_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1);
 					} else {
 						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1, false);
 					}
@@ -538,7 +550,7 @@ public class PlaceSodasProcedure {
 					public boolean checkGamemode(Entity _ent) {
 						if (_ent instanceof ServerPlayer _serverPlayer) {
 							return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-						} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+						} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
 							return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
 									&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
 						}
@@ -554,15 +566,16 @@ public class PlaceSodasProcedure {
 					Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("pokefood:adv_display_soda"));
 					AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 					if (!_ap.isDone()) {
-						for (String criteria : _ap.getRemainingCriteria())
-							_player.getAdvancements().award(_adv, criteria);
+						Iterator _iterator = _ap.getRemainingCriteria().iterator();
+						while (_iterator.hasNext())
+							_player.getAdvancements().award(_adv, (String) _iterator.next());
 					}
 				}
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModItems.SODA_APRI_W.get()) {
-				world.setBlock(BlockPos.containing(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_APRI_W_1.get().defaultBlockState(), 3);
+				world.setBlock(new BlockPos(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_APRI_W_1.get().defaultBlockState(), 3);
 				{
 					Direction _dir = ((entity.getDirection()).getOpposite());
-					BlockPos _pos = BlockPos.containing(x, y + 1, z);
+					BlockPos _pos = new BlockPos(x, y + 1, z);
 					BlockState _bs = world.getBlockState(_pos);
 					Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
 					if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(_dir)) {
@@ -575,7 +588,7 @@ public class PlaceSodasProcedure {
 				}
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1);
+						_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1);
 					} else {
 						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1, false);
 					}
@@ -584,7 +597,7 @@ public class PlaceSodasProcedure {
 					public boolean checkGamemode(Entity _ent) {
 						if (_ent instanceof ServerPlayer _serverPlayer) {
 							return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-						} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+						} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
 							return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
 									&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
 						}
@@ -600,15 +613,16 @@ public class PlaceSodasProcedure {
 					Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("pokefood:adv_display_soda"));
 					AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 					if (!_ap.isDone()) {
-						for (String criteria : _ap.getRemainingCriteria())
-							_player.getAdvancements().award(_adv, criteria);
+						Iterator _iterator = _ap.getRemainingCriteria().iterator();
+						while (_iterator.hasNext())
+							_player.getAdvancements().award(_adv, (String) _iterator.next());
 					}
 				}
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModItems.SODA_CHERRISH.get()) {
-				world.setBlock(BlockPos.containing(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_CHERRY_1.get().defaultBlockState(), 3);
+				world.setBlock(new BlockPos(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_CHERRY_1.get().defaultBlockState(), 3);
 				{
 					Direction _dir = ((entity.getDirection()).getOpposite());
-					BlockPos _pos = BlockPos.containing(x, y + 1, z);
+					BlockPos _pos = new BlockPos(x, y + 1, z);
 					BlockState _bs = world.getBlockState(_pos);
 					Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
 					if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(_dir)) {
@@ -621,7 +635,7 @@ public class PlaceSodasProcedure {
 				}
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1);
+						_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1);
 					} else {
 						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1, false);
 					}
@@ -630,7 +644,7 @@ public class PlaceSodasProcedure {
 					public boolean checkGamemode(Entity _ent) {
 						if (_ent instanceof ServerPlayer _serverPlayer) {
 							return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-						} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+						} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
 							return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
 									&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
 						}
@@ -646,15 +660,16 @@ public class PlaceSodasProcedure {
 					Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("pokefood:adv_display_soda"));
 					AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 					if (!_ap.isDone()) {
-						for (String criteria : _ap.getRemainingCriteria())
-							_player.getAdvancements().award(_adv, criteria);
+						Iterator _iterator = _ap.getRemainingCriteria().iterator();
+						while (_iterator.hasNext())
+							_player.getAdvancements().award(_adv, (String) _iterator.next());
 					}
 				}
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModItems.SODA_SOMBRINE.get()) {
-				world.setBlock(BlockPos.containing(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_SOMBRINE_1.get().defaultBlockState(), 3);
+				world.setBlock(new BlockPos(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_SOMBRINE_1.get().defaultBlockState(), 3);
 				{
 					Direction _dir = ((entity.getDirection()).getOpposite());
-					BlockPos _pos = BlockPos.containing(x, y + 1, z);
+					BlockPos _pos = new BlockPos(x, y + 1, z);
 					BlockState _bs = world.getBlockState(_pos);
 					Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
 					if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(_dir)) {
@@ -667,7 +682,7 @@ public class PlaceSodasProcedure {
 				}
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1);
+						_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1);
 					} else {
 						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1, false);
 					}
@@ -676,7 +691,7 @@ public class PlaceSodasProcedure {
 					public boolean checkGamemode(Entity _ent) {
 						if (_ent instanceof ServerPlayer _serverPlayer) {
 							return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-						} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+						} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
 							return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
 									&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
 						}
@@ -692,15 +707,16 @@ public class PlaceSodasProcedure {
 					Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("pokefood:adv_display_soda"));
 					AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 					if (!_ap.isDone()) {
-						for (String criteria : _ap.getRemainingCriteria())
-							_player.getAdvancements().award(_adv, criteria);
+						Iterator _iterator = _ap.getRemainingCriteria().iterator();
+						while (_iterator.hasNext())
+							_player.getAdvancements().award(_adv, (String) _iterator.next());
 					}
 				}
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModItems.SODA_SOMBRADE.get()) {
-				world.setBlock(BlockPos.containing(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_SOMBRADE_1.get().defaultBlockState(), 3);
+				world.setBlock(new BlockPos(x, y + 1, z), PokefoodModBlocks.DISPLAY_SODA_SOMBRADE_1.get().defaultBlockState(), 3);
 				{
 					Direction _dir = ((entity.getDirection()).getOpposite());
-					BlockPos _pos = BlockPos.containing(x, y + 1, z);
+					BlockPos _pos = new BlockPos(x, y + 1, z);
 					BlockState _bs = world.getBlockState(_pos);
 					Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
 					if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(_dir)) {
@@ -713,7 +729,7 @@ public class PlaceSodasProcedure {
 				}
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1);
+						_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1);
 					} else {
 						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.glass.place")), SoundSource.BLOCKS, 1, 1, false);
 					}
@@ -722,7 +738,7 @@ public class PlaceSodasProcedure {
 					public boolean checkGamemode(Entity _ent) {
 						if (_ent instanceof ServerPlayer _serverPlayer) {
 							return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-						} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+						} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
 							return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
 									&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
 						}
@@ -738,8 +754,9 @@ public class PlaceSodasProcedure {
 					Advancement _adv = _player.server.getAdvancements().getAdvancement(new ResourceLocation("pokefood:adv_display_soda"));
 					AdvancementProgress _ap = _player.getAdvancements().getOrStartProgress(_adv);
 					if (!_ap.isDone()) {
-						for (String criteria : _ap.getRemainingCriteria())
-							_player.getAdvancements().award(_adv, criteria);
+						Iterator _iterator = _ap.getRemainingCriteria().iterator();
+						while (_iterator.hasNext())
+							_player.getAdvancements().award(_adv, (String) _iterator.next());
 					}
 				}
 			}

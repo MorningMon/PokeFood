@@ -1,12 +1,10 @@
 {
-  "_fv": 47,
+  "_fv": 43,
   "_type": "item",
   "definition": {
     "renderType": 0,
     "texture": "apricup_empty",
     "customModelName": "Normal",
-    "customProperties": {},
-    "states": [],
     "name": "Cup",
     "rarity": "COMMON",
     "creativeTab": {

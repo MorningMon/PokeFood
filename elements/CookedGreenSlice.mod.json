@@ -1,12 +1,10 @@
 {
-  "_fv": 47,
+  "_fv": 43,
   "_type": "item",
   "definition": {
     "renderType": 0,
     "texture": "cooked_chikorita_slice",
     "customModelName": "Normal",
-    "customProperties": {},
-    "states": [],
     "name": "Cooked green slice",
     "rarity": "COMMON",
     "creativeTab": {

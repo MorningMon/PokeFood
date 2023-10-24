@@ -1,12 +1,10 @@
 {
-  "_fv": 47,
+  "_fv": 43,
   "_type": "item",
   "definition": {
     "renderType": 0,
     "texture": "fried_nido_meat",
     "customModelName": "Normal",
-    "customProperties": {},
-    "states": [],
     "name": "Fried Nido Meat",
     "rarity": "COMMON",
     "creativeTab": {

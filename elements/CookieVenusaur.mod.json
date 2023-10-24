@@ -1,12 +1,10 @@
 {
-  "_fv": 47,
+  "_fv": 43,
   "_type": "item",
   "definition": {
     "renderType": 0,
     "texture": "venusaur",
     "customModelName": "Normal",
-    "customProperties": {},
-    "states": [],
     "name": "Venusaur cookie",
     "rarity": "COMMON",
     "creativeTab": {

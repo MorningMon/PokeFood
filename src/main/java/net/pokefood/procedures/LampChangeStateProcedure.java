@@ -37,9 +37,9 @@ public class LampChangeStateProcedure {
 		if (entity == null)
 			return;
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == ItemStack.EMPTY.getItem()) {
-			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.LAMP_0_OFF.get()) {
+			if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.LAMP_0_OFF.get()) {
 				{
-					BlockPos _bp = BlockPos.containing(x, y, z);
+					BlockPos _bp = new BlockPos(x, y, z);
 					BlockState _bs = PokefoodModBlocks.LAMP_0_ON.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -54,9 +54,9 @@ public class LampChangeStateProcedure {
 				}
 				if (entity instanceof LivingEntity _entity)
 					_entity.swing(InteractionHand.MAIN_HAND, true);
-			} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.LAMP_0_ON.get()) {
+			} else if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.LAMP_0_ON.get()) {
 				{
-					BlockPos _bp = BlockPos.containing(x, y, z);
+					BlockPos _bp = new BlockPos(x, y, z);
 					BlockState _bs = PokefoodModBlocks.LAMP_0_OFF.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {

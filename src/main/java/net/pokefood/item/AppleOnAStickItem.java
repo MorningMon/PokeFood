@@ -1,6 +1,8 @@
 
 package net.pokefood.item;
 
+import net.pokefood.init.PokefoodModTabs;
+
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.Items;
@@ -12,7 +14,9 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class AppleOnAStickItem extends Item {
 	public AppleOnAStickItem() {
-		super(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(4).saturationMod(0.6f).build()));
+		super(new Item.Properties().tab(PokefoodModTabs.TAB_POKE_FOOD_INGREDIENTS).stacksTo(1).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(4).saturationMod(0.6f)
+
+				.build()));
 	}
 
 	@Override

@@ -13,9 +13,9 @@ import java.util.Map;
 
 public class RiceStageChangerProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
-		if (Mth.nextInt(RandomSource.create(), 1, 3) == 2 && (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.RICE_STAGE_0.get()) {
+		if (Mth.nextInt(RandomSource.create(), 1, 3) == 2 && (world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.RICE_STAGE_0.get()) {
 			{
-				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockPos _bp = new BlockPos(x, y, z);
 				BlockState _bs = PokefoodModBlocks.RICE_STAGE_1.get().defaultBlockState();
 				BlockState _bso = world.getBlockState(_bp);
 				for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -28,9 +28,9 @@ public class RiceStageChangerProcedure {
 				}
 				world.setBlock(_bp, _bs, 3);
 			}
-		} else if (Mth.nextInt(RandomSource.create(), 1, 3) == 2 && (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.RICE_STAGE_1.get()) {
+		} else if (Mth.nextInt(RandomSource.create(), 1, 3) == 2 && (world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.RICE_STAGE_1.get()) {
 			{
-				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockPos _bp = new BlockPos(x, y, z);
 				BlockState _bs = PokefoodModBlocks.RICE_STAGE_2.get().defaultBlockState();
 				BlockState _bso = world.getBlockState(_bp);
 				for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -43,9 +43,9 @@ public class RiceStageChangerProcedure {
 				}
 				world.setBlock(_bp, _bs, 3);
 			}
-		} else if (Mth.nextInt(RandomSource.create(), 1, 3) == 2 && (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.RICE_STAGE_2.get()) {
+		} else if (Mth.nextInt(RandomSource.create(), 1, 3) == 2 && (world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.RICE_STAGE_2.get()) {
 			{
-				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockPos _bp = new BlockPos(x, y, z);
 				BlockState _bs = PokefoodModBlocks.RICE_STAGE_3.get().defaultBlockState();
 				BlockState _bso = world.getBlockState(_bp);
 				for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -58,9 +58,9 @@ public class RiceStageChangerProcedure {
 				}
 				world.setBlock(_bp, _bs, 3);
 			}
-		} else if (Mth.nextInt(RandomSource.create(), 1, 3) == 2 && (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.RICE_STAGE_3.get()) {
+		} else if (Mth.nextInt(RandomSource.create(), 1, 3) == 2 && (world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.RICE_STAGE_3.get()) {
 			{
-				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockPos _bp = new BlockPos(x, y, z);
 				BlockState _bs = PokefoodModBlocks.RICE_STAGE_4.get().defaultBlockState();
 				BlockState _bso = world.getBlockState(_bp);
 				for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -73,9 +73,9 @@ public class RiceStageChangerProcedure {
 				}
 				world.setBlock(_bp, _bs, 3);
 			}
-		} else if (Mth.nextInt(RandomSource.create(), 1, 3) == 2 && (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.RICE_STAGE_4.get()) {
+		} else if (Mth.nextInt(RandomSource.create(), 1, 3) == 2 && (world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.RICE_STAGE_4.get()) {
 			{
-				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockPos _bp = new BlockPos(x, y, z);
 				BlockState _bs = PokefoodModBlocks.RICE_STAGE_5.get().defaultBlockState();
 				BlockState _bso = world.getBlockState(_bp);
 				for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {

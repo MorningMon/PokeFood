@@ -23,7 +23,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class MixingProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
-		if (((new Object() {
+		if ((new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -31,7 +31,7 @@ public class MixingProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 0)).is(ItemTags.create(new ResourceLocation("forge:berries"))) || (new Object() {
+		}.getItemStack(world, new BlockPos(x, y, z), 0)).is(ItemTags.create(new ResourceLocation("forge:berries"))) && (new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -39,7 +39,7 @@ public class MixingProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 0)).is(ItemTags.create(new ResourceLocation("cobblemon:berries")))) && ((new Object() {
+		}.getItemStack(world, new BlockPos(x, y, z), 1)).is(ItemTags.create(new ResourceLocation("forge:berries"))) && (new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -47,7 +47,7 @@ public class MixingProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 1)).is(ItemTags.create(new ResourceLocation("forge:berries"))) || (new Object() {
+		}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == Items.MILK_BUCKET && (new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -55,23 +55,7 @@ public class MixingProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 1)).is(ItemTags.create(new ResourceLocation("cobblemon:berries")))) && (new Object() {
-			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				BlockEntity _ent = world.getBlockEntity(pos);
-				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-				return _retval.get();
-			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == Items.MILK_BUCKET && (new Object() {
-			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				BlockEntity _ent = world.getBlockEntity(pos);
-				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-				return _retval.get();
-			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 3)).is(ItemTags.create(new ResourceLocation("forge:can_be_mixed"))) && new Object() {
+		}.getItemStack(world, new BlockPos(x, y, z), 3)).is(ItemTags.create(new ResourceLocation("forge:can_be_mixed"))) && new Object() {
 			public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -79,9 +63,9 @@ public class MixingProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, BlockPos.containing(x, y, z), 4) == 0) {
+		}.getAmount(world, new BlockPos(x, y, z), 4) == 0) {
 			if (!world.isClientSide()) {
-				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockPos _bp = new BlockPos(x, y, z);
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
@@ -90,7 +74,7 @@ public class MixingProcedure {
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
 			if (!world.isClientSide()) {
-				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockPos _bp = new BlockPos(x, y, z);
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
@@ -99,7 +83,7 @@ public class MixingProcedure {
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
 			if (!world.isClientSide()) {
-				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockPos _bp = new BlockPos(x, y, z);
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
@@ -110,7 +94,7 @@ public class MixingProcedure {
 								return blockEntity.getPersistentData().getDouble(tag);
 							return -1;
 						}
-					}.getValue(world, BlockPos.containing(x, y, z), "craftingProgress") + 1));
+					}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
 				if (world instanceof Level _level)
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
@@ -121,9 +105,9 @@ public class MixingProcedure {
 						return blockEntity.getPersistentData().getDouble(tag);
 					return -1;
 				}
-			}.getValue(world, BlockPos.containing(x, y, z), "mixing_color") == 0) {
+			}.getValue(world, new BlockPos(x, y, z), "mixing_color") == 0) {
 				if (!world.isClientSide()) {
-					BlockPos _bp = BlockPos.containing(x, y, z);
+					BlockPos _bp = new BlockPos(x, y, z);
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_blockEntity != null)
@@ -139,8 +123,8 @@ public class MixingProcedure {
 								return blockEntity.getPersistentData().getDouble(tag);
 							return -1;
 						}
-					}.getValue(world, BlockPos.containing(x, y, z), "mixing_color"));
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					}.getValue(world, new BlockPos(x, y, z), "mixing_color"));
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("mixing_color") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -153,17 +137,17 @@ public class MixingProcedure {
 						return blockEntity.getPersistentData().getDouble(tag);
 					return -1;
 				}
-			}.getValue(world, BlockPos.containing(x, y, z), "craftingProgress") >= new Object() {
+			}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= new Object() {
 				public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 					BlockEntity blockEntity = world.getBlockEntity(pos);
 					if (blockEntity != null)
 						return blockEntity.getPersistentData().getDouble(tag);
 					return -1;
 				}
-			}.getValue(world, BlockPos.containing(x, y, z), "craftingTime")) {
+			}.getValue(world, new BlockPos(x, y, z), "craftingTime")) {
 				FrostingMixingProcedure.execute(world, x, y, z);
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 0;
 						final int _amount = 1;
@@ -177,7 +161,7 @@ public class MixingProcedure {
 					}
 				}
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 1;
 						final int _amount = 1;
@@ -191,7 +175,7 @@ public class MixingProcedure {
 					}
 				}
 				if (!world.isClientSide()) {
-					BlockPos _bp = BlockPos.containing(x, y, z);
+					BlockPos _bp = new BlockPos(x, y, z);
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_blockEntity != null)
@@ -200,7 +184,7 @@ public class MixingProcedure {
 						_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 				}
 				if (!world.isClientSide()) {
-					BlockPos _bp = BlockPos.containing(x, y, z);
+					BlockPos _bp = new BlockPos(x, y, z);
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_blockEntity != null)
@@ -216,9 +200,9 @@ public class MixingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).is(ItemTags.create(new ResourceLocation("forge:buckets")))) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).is(ItemTags.create(new ResourceLocation("forge:buckets")))) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 2;
 							final ItemStack _setstack = new ItemStack(Items.BUCKET);
@@ -237,9 +221,9 @@ public class MixingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).is(ItemTags.create(new ResourceLocation("forge:cups")))) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).is(ItemTags.create(new ResourceLocation("forge:cups")))) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 2;
 							final ItemStack _setstack = new ItemStack(PokefoodModItems.CUP.get());
@@ -258,9 +242,9 @@ public class MixingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).is(ItemTags.create(new ResourceLocation("forge:bottles")))) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).is(ItemTags.create(new ResourceLocation("forge:bottles")))) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 2;
 							final ItemStack _setstack = new ItemStack(Items.GLASS_BOTTLE);
@@ -273,7 +257,7 @@ public class MixingProcedure {
 					}
 				} else {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 2;
 							final int _amount = 1;
@@ -295,9 +279,9 @@ public class MixingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 3)).is(ItemTags.create(new ResourceLocation("forge:buckets")))) {
+				}.getItemStack(world, new BlockPos(x, y, z), 3)).is(ItemTags.create(new ResourceLocation("forge:buckets")))) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 3;
 							final ItemStack _setstack = new ItemStack(Items.BUCKET);
@@ -316,9 +300,9 @@ public class MixingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 3)).is(ItemTags.create(new ResourceLocation("forge:cups")))) {
+				}.getItemStack(world, new BlockPos(x, y, z), 3)).is(ItemTags.create(new ResourceLocation("forge:cups")))) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 3;
 							final ItemStack _setstack = new ItemStack(PokefoodModItems.CUP.get());
@@ -337,9 +321,9 @@ public class MixingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 3)).is(ItemTags.create(new ResourceLocation("forge:bottles")))) {
+				}.getItemStack(world, new BlockPos(x, y, z), 3)).is(ItemTags.create(new ResourceLocation("forge:bottles")))) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 3;
 							final ItemStack _setstack = new ItemStack(Items.GLASS_BOTTLE);
@@ -352,7 +336,7 @@ public class MixingProcedure {
 					}
 				} else {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 3;
 							final int _amount = 1;
@@ -367,7 +351,7 @@ public class MixingProcedure {
 					}
 				}
 				if (!world.isClientSide()) {
-					BlockPos _bp = BlockPos.containing(x, y, z);
+					BlockPos _bp = new BlockPos(x, y, z);
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_blockEntity != null)
@@ -377,13 +361,13 @@ public class MixingProcedure {
 				}
 				{
 					int _value = 0;
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("mixing_color") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 				}
 			}
-		} else if (((new Object() {
+		} else if ((new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -391,7 +375,7 @@ public class MixingProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 0)).is(ItemTags.create(new ResourceLocation("forge:berries"))) || (new Object() {
+		}.getItemStack(world, new BlockPos(x, y, z), 0)).is(ItemTags.create(new ResourceLocation("forge:berries"))) && (new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -399,7 +383,7 @@ public class MixingProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 0)).is(ItemTags.create(new ResourceLocation("cobblemon:berries")))) && ((new Object() {
+		}.getItemStack(world, new BlockPos(x, y, z), 1)).is(ItemTags.create(new ResourceLocation("forge:berries"))) && (new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -407,7 +391,7 @@ public class MixingProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 1)).is(ItemTags.create(new ResourceLocation("forge:berries"))) || (new Object() {
+		}.getItemStack(world, new BlockPos(x, y, z), 2)).is(ItemTags.create(new ResourceLocation("forge:can_be_mixed"))) && (new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -415,23 +399,7 @@ public class MixingProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 1)).is(ItemTags.create(new ResourceLocation("cobblemon:berries")))) && (new Object() {
-			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				BlockEntity _ent = world.getBlockEntity(pos);
-				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-				return _retval.get();
-			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 2)).is(ItemTags.create(new ResourceLocation("forge:can_be_mixed"))) && (new Object() {
-			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
-				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
-				BlockEntity _ent = world.getBlockEntity(pos);
-				if (_ent != null)
-					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
-				return _retval.get();
-			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 3)).is(ItemTags.create(new ResourceLocation("forge:can_be_mixed"))) && new Object() {
+		}.getItemStack(world, new BlockPos(x, y, z), 3)).is(ItemTags.create(new ResourceLocation("forge:can_be_mixed"))) && new Object() {
 			public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -439,9 +407,9 @@ public class MixingProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, BlockPos.containing(x, y, z), 4) == 0) {
+		}.getAmount(world, new BlockPos(x, y, z), 4) == 0) {
 			if (!world.isClientSide()) {
-				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockPos _bp = new BlockPos(x, y, z);
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
@@ -450,7 +418,7 @@ public class MixingProcedure {
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
 			if (!world.isClientSide()) {
-				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockPos _bp = new BlockPos(x, y, z);
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
@@ -459,7 +427,7 @@ public class MixingProcedure {
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
 			if (!world.isClientSide()) {
-				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockPos _bp = new BlockPos(x, y, z);
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
@@ -470,7 +438,7 @@ public class MixingProcedure {
 								return blockEntity.getPersistentData().getDouble(tag);
 							return -1;
 						}
-					}.getValue(world, BlockPos.containing(x, y, z), "craftingProgress") + 1));
+					}.getValue(world, new BlockPos(x, y, z), "craftingProgress") + 1));
 				if (world instanceof Level _level)
 					_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 			}
@@ -481,9 +449,9 @@ public class MixingProcedure {
 						return blockEntity.getPersistentData().getDouble(tag);
 					return -1;
 				}
-			}.getValue(world, BlockPos.containing(x, y, z), "mixing_color") == 0) {
+			}.getValue(world, new BlockPos(x, y, z), "mixing_color") == 0) {
 				if (!world.isClientSide()) {
-					BlockPos _bp = BlockPos.containing(x, y, z);
+					BlockPos _bp = new BlockPos(x, y, z);
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_blockEntity != null)
@@ -499,8 +467,8 @@ public class MixingProcedure {
 								return blockEntity.getPersistentData().getDouble(tag);
 							return -1;
 						}
-					}.getValue(world, BlockPos.containing(x, y, z), "mixing_color"));
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					}.getValue(world, new BlockPos(x, y, z), "mixing_color"));
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("mixing_color") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -513,17 +481,17 @@ public class MixingProcedure {
 						return blockEntity.getPersistentData().getDouble(tag);
 					return -1;
 				}
-			}.getValue(world, BlockPos.containing(x, y, z), "craftingProgress") >= new Object() {
+			}.getValue(world, new BlockPos(x, y, z), "craftingProgress") >= new Object() {
 				public double getValue(LevelAccessor world, BlockPos pos, String tag) {
 					BlockEntity blockEntity = world.getBlockEntity(pos);
 					if (blockEntity != null)
 						return blockEntity.getPersistentData().getDouble(tag);
 					return -1;
 				}
-			}.getValue(world, BlockPos.containing(x, y, z), "craftingTime")) {
+			}.getValue(world, new BlockPos(x, y, z), "craftingTime")) {
 				FrostingMixingProcedure.execute(world, x, y, z);
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 0;
 						final int _amount = 1;
@@ -537,7 +505,7 @@ public class MixingProcedure {
 					}
 				}
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 1;
 						final int _amount = 1;
@@ -551,7 +519,7 @@ public class MixingProcedure {
 					}
 				}
 				if (!world.isClientSide()) {
-					BlockPos _bp = BlockPos.containing(x, y, z);
+					BlockPos _bp = new BlockPos(x, y, z);
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_blockEntity != null)
@@ -560,7 +528,7 @@ public class MixingProcedure {
 						_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 				}
 				if (!world.isClientSide()) {
-					BlockPos _bp = BlockPos.containing(x, y, z);
+					BlockPos _bp = new BlockPos(x, y, z);
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_blockEntity != null)
@@ -576,9 +544,9 @@ public class MixingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).is(ItemTags.create(new ResourceLocation("forge:buckets")))) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).is(ItemTags.create(new ResourceLocation("forge:buckets")))) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 2;
 							final ItemStack _setstack = new ItemStack(Items.BUCKET);
@@ -597,9 +565,9 @@ public class MixingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).is(ItemTags.create(new ResourceLocation("forge:cups")))) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).is(ItemTags.create(new ResourceLocation("forge:cups")))) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 2;
 							final ItemStack _setstack = new ItemStack(PokefoodModItems.CUP.get());
@@ -618,9 +586,9 @@ public class MixingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).is(ItemTags.create(new ResourceLocation("forge:bottles")))) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).is(ItemTags.create(new ResourceLocation("forge:bottles")))) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 2;
 							final ItemStack _setstack = new ItemStack(Items.GLASS_BOTTLE);
@@ -633,7 +601,7 @@ public class MixingProcedure {
 					}
 				} else {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 2;
 							final int _amount = 1;
@@ -655,9 +623,9 @@ public class MixingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 3)).is(ItemTags.create(new ResourceLocation("forge:buckets")))) {
+				}.getItemStack(world, new BlockPos(x, y, z), 3)).is(ItemTags.create(new ResourceLocation("forge:buckets")))) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 3;
 							final ItemStack _setstack = new ItemStack(Items.BUCKET);
@@ -676,9 +644,9 @@ public class MixingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 3)).is(ItemTags.create(new ResourceLocation("forge:cups")))) {
+				}.getItemStack(world, new BlockPos(x, y, z), 3)).is(ItemTags.create(new ResourceLocation("forge:cups")))) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 3;
 							final ItemStack _setstack = new ItemStack(PokefoodModItems.CUP.get());
@@ -697,9 +665,9 @@ public class MixingProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 3)).is(ItemTags.create(new ResourceLocation("forge:bottles")))) {
+				}.getItemStack(world, new BlockPos(x, y, z), 3)).is(ItemTags.create(new ResourceLocation("forge:bottles")))) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 3;
 							final ItemStack _setstack = new ItemStack(Items.GLASS_BOTTLE);
@@ -712,7 +680,7 @@ public class MixingProcedure {
 					}
 				} else {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 3;
 							final int _amount = 1;
@@ -727,7 +695,7 @@ public class MixingProcedure {
 					}
 				}
 				if (!world.isClientSide()) {
-					BlockPos _bp = BlockPos.containing(x, y, z);
+					BlockPos _bp = new BlockPos(x, y, z);
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_blockEntity != null)
@@ -737,7 +705,7 @@ public class MixingProcedure {
 				}
 				{
 					int _value = 0;
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("mixing_color") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -751,9 +719,9 @@ public class MixingProcedure {
 						return blockEntity.getPersistentData().getDouble(tag);
 					return -1;
 				}
-			}.getValue(world, BlockPos.containing(x, y, z), "craftingTime") != 0) {
+			}.getValue(world, new BlockPos(x, y, z), "craftingTime") != 0) {
 				if (!world.isClientSide()) {
-					BlockPos _bp = BlockPos.containing(x, y, z);
+					BlockPos _bp = new BlockPos(x, y, z);
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_blockEntity != null)
@@ -762,7 +730,7 @@ public class MixingProcedure {
 						_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 				}
 				if (!world.isClientSide()) {
-					BlockPos _bp = BlockPos.containing(x, y, z);
+					BlockPos _bp = new BlockPos(x, y, z);
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_blockEntity != null)
@@ -771,7 +739,7 @@ public class MixingProcedure {
 						_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 				}
 				if (!world.isClientSide()) {
-					BlockPos _bp = BlockPos.containing(x, y, z);
+					BlockPos _bp = new BlockPos(x, y, z);
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_blockEntity != null)
@@ -781,14 +749,14 @@ public class MixingProcedure {
 				}
 				{
 					int _value = 0;
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("mixing_color") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 				}
 			} else {
 				if (!world.isClientSide()) {
-					BlockPos _bp = BlockPos.containing(x, y, z);
+					BlockPos _bp = new BlockPos(x, y, z);
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_blockEntity != null)
@@ -797,7 +765,7 @@ public class MixingProcedure {
 						_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 				}
 				if (!world.isClientSide()) {
-					BlockPos _bp = BlockPos.containing(x, y, z);
+					BlockPos _bp = new BlockPos(x, y, z);
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_blockEntity != null)
@@ -806,7 +774,7 @@ public class MixingProcedure {
 						_level.sendBlockUpdated(_bp, _bs, _bs, 3);
 				}
 				if (!world.isClientSide()) {
-					BlockPos _bp = BlockPos.containing(x, y, z);
+					BlockPos _bp = new BlockPos(x, y, z);
 					BlockEntity _blockEntity = world.getBlockEntity(_bp);
 					BlockState _bs = world.getBlockState(_bp);
 					if (_blockEntity != null)
@@ -816,7 +784,7 @@ public class MixingProcedure {
 				}
 				{
 					int _value = 0;
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("mixing_color") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);

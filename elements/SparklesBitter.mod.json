@@ -1,12 +1,10 @@
 {
-  "_fv": 47,
+  "_fv": 43,
   "_type": "item",
   "definition": {
     "renderType": 0,
     "texture": "bitter_sprinkles",
     "customModelName": "Normal",
-    "customProperties": {},
-    "states": [],
     "name": "Bitter Sprinkles",
     "rarity": "COMMON",
     "creativeTab": {

@@ -1,6 +1,9 @@
 {
-  "parent": "item/generated",
+  "parent": "pokefood:custom/letuce_wild",
   "textures": {
-    "layer0": "pokefood:block/letuce"
-  }
+    "all": "pokefood:blocks/letuce",
+    "particle": "pokefood:blocks/letuce_wild",
+    "0": "pokefood:blocks/letuce_wild"
+  },
+  "render_type": "cutout"
 }

@@ -64,73 +64,73 @@ public class CandyMachineGUISlotMessage {
 		context.setPacketHandled(true);
 	}
 
-	public static void handleSlotAction(Player entity, int slot, int changeType, int meta, int x, int y, int z) {
-		Level world = entity.level();
+	public static void handleSlotAction(Player entity, int slotID, int changeType, int meta, int x, int y, int z) {
+		Level world = entity.level;
 		HashMap guistate = CandyMachineGUIMenu.guistate;
 		// security measure to prevent arbitrary chunk generation
 		if (!world.hasChunkAt(new BlockPos(x, y, z)))
 			return;
-		if (slot == 0 && changeType == 1) {
+		if (slotID == 0 && changeType == 1) {
 
 			CandyMachineTakingProcedure.execute(world, x, y, z);
 		}
-		if (slot == 1 && changeType == 1) {
+		if (slotID == 1 && changeType == 1) {
 
 			CandyMachineTakingProcedure.execute(world, x, y, z);
 		}
-		if (slot == 2 && changeType == 1) {
+		if (slotID == 2 && changeType == 1) {
 
 			CandyMachineTakingProcedure.execute(world, x, y, z);
 		}
-		if (slot == 3 && changeType == 1) {
+		if (slotID == 3 && changeType == 1) {
 
 			CandyMachineTakingProcedure.execute(world, x, y, z);
 		}
-		if (slot == 4 && changeType == 1) {
+		if (slotID == 4 && changeType == 1) {
 
 			CandyMachineTakingProcedure.execute(world, x, y, z);
 		}
-		if (slot == 5 && changeType == 1) {
+		if (slotID == 5 && changeType == 1) {
 
 			CandyMachineTakingProcedure.execute(world, x, y, z);
 		}
-		if (slot == 6 && changeType == 1) {
+		if (slotID == 6 && changeType == 1) {
 
 			CandyMachineTakingProcedure.execute(world, x, y, z);
 		}
-		if (slot == 7 && changeType == 1) {
+		if (slotID == 7 && changeType == 1) {
 
 			CandyMachineTakingProcedure.execute(world, x, y, z);
 		}
-		if (slot == 8 && changeType == 1) {
+		if (slotID == 8 && changeType == 1) {
 
 			CandyMachineTakingProcedure.execute(world, x, y, z);
 		}
-		if (slot == 9 && changeType == 1) {
+		if (slotID == 9 && changeType == 1) {
 
 			CandyMachineTakingProcedure.execute(world, x, y, z);
 		}
-		if (slot == 10 && changeType == 1) {
+		if (slotID == 10 && changeType == 1) {
 
 			CandyMachineTakingProcedure.execute(world, x, y, z);
 		}
-		if (slot == 11 && changeType == 1) {
+		if (slotID == 11 && changeType == 1) {
 
 			CandyMachineTakingProcedure.execute(world, x, y, z);
 		}
-		if (slot == 12 && changeType == 1) {
+		if (slotID == 12 && changeType == 1) {
 
 			CandyMachineTakingProcedure.execute(world, x, y, z);
 		}
-		if (slot == 13 && changeType == 1) {
+		if (slotID == 13 && changeType == 1) {
 
 			CandyMachineTakingProcedure.execute(world, x, y, z);
 		}
-		if (slot == 14 && changeType == 1) {
+		if (slotID == 14 && changeType == 1) {
 
 			CandyMachineTakingProcedure.execute(world, x, y, z);
 		}
-		if (slot == 15 && changeType == 1) {
+		if (slotID == 15 && changeType == 1) {
 
 			CandyMachineTakingProcedure.execute(world, x, y, z);
 		}

@@ -27,7 +27,7 @@ public class BrewRoseWineProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 					return _retval.get();
 				}
-			}.getItemStack(world, BlockPos.containing(x, y, z), 1)).getItem() == PokefoodModItems.BLACK_GRAPES.get()) {
+			}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == PokefoodModItems.BLACK_GRAPES.get()) {
 				nbRedGrape = nbRedGrape + 1;
 			} else if ((new Object() {
 				public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
@@ -37,7 +37,7 @@ public class BrewRoseWineProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 					return _retval.get();
 				}
-			}.getItemStack(world, BlockPos.containing(x, y, z), 1)).getItem() == PokefoodModItems.GREEN_GRAPES.get()) {
+			}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == PokefoodModItems.GREEN_GRAPES.get()) {
 				nbWhiteGrape = nbWhiteGrape + 1;
 			}
 			if ((new Object() {
@@ -48,7 +48,7 @@ public class BrewRoseWineProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 					return _retval.get();
 				}
-			}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.BLACK_GRAPES.get()) {
+			}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.BLACK_GRAPES.get()) {
 				nbRedGrape = nbRedGrape + 1;
 			} else if ((new Object() {
 				public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
@@ -58,7 +58,7 @@ public class BrewRoseWineProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 					return _retval.get();
 				}
-			}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.GREEN_GRAPES.get()) {
+			}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.GREEN_GRAPES.get()) {
 				nbWhiteGrape = nbWhiteGrape + 1;
 			}
 			if ((new Object() {
@@ -69,7 +69,7 @@ public class BrewRoseWineProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 					return _retval.get();
 				}
-			}.getItemStack(world, BlockPos.containing(x, y, z), 4)).getItem() == PokefoodModItems.BLACK_GRAPES.get()) {
+			}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem() == PokefoodModItems.BLACK_GRAPES.get()) {
 				nbRedGrape = nbRedGrape + 1;
 			} else if ((new Object() {
 				public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
@@ -79,7 +79,7 @@ public class BrewRoseWineProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 					return _retval.get();
 				}
-			}.getItemStack(world, BlockPos.containing(x, y, z), 4)).getItem() == PokefoodModItems.GREEN_GRAPES.get()) {
+			}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem() == PokefoodModItems.GREEN_GRAPES.get()) {
 				nbWhiteGrape = nbWhiteGrape + 1;
 			}
 			if ((new Object() {
@@ -90,7 +90,7 @@ public class BrewRoseWineProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 					return _retval.get();
 				}
-			}.getItemStack(world, BlockPos.containing(x, y, z), 5)).getItem() == PokefoodModItems.BLACK_GRAPES.get()) {
+			}.getItemStack(world, new BlockPos(x, y, z), 5)).getItem() == PokefoodModItems.BLACK_GRAPES.get()) {
 				nbRedGrape = nbRedGrape + 1;
 			} else if ((new Object() {
 				public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
@@ -100,7 +100,7 @@ public class BrewRoseWineProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 					return _retval.get();
 				}
-			}.getItemStack(world, BlockPos.containing(x, y, z), 5)).getItem() == PokefoodModItems.GREEN_GRAPES.get()) {
+			}.getItemStack(world, new BlockPos(x, y, z), 5)).getItem() == PokefoodModItems.GREEN_GRAPES.get()) {
 				nbWhiteGrape = nbWhiteGrape + 1;
 			}
 			if ((new Object() {
@@ -111,7 +111,7 @@ public class BrewRoseWineProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 					return _retval.get();
 				}
-			}.getItemStack(world, BlockPos.containing(x, y, z), 6)).getItem() == PokefoodModItems.BLACK_GRAPES.get()) {
+			}.getItemStack(world, new BlockPos(x, y, z), 6)).getItem() == PokefoodModItems.BLACK_GRAPES.get()) {
 				nbRedGrape = nbRedGrape + 1;
 			} else if ((new Object() {
 				public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
@@ -121,7 +121,7 @@ public class BrewRoseWineProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 					return _retval.get();
 				}
-			}.getItemStack(world, BlockPos.containing(x, y, z), 6)).getItem() == PokefoodModItems.GREEN_GRAPES.get()) {
+			}.getItemStack(world, new BlockPos(x, y, z), 6)).getItem() == PokefoodModItems.GREEN_GRAPES.get()) {
 				nbWhiteGrape = nbWhiteGrape + 1;
 			}
 		}
@@ -133,7 +133,7 @@ public class BrewRoseWineProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 0)).getItem() == Items.BUCKET && new Object() {
+		}.getItemStack(world, new BlockPos(x, y, z), 0)).getItem() == Items.BUCKET && new Object() {
 			public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -141,7 +141,7 @@ public class BrewRoseWineProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, BlockPos.containing(x, y, z), 3) == 0 && nbRedGrape == 3 && nbWhiteGrape == 2) {
+		}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && nbRedGrape == 3 && nbWhiteGrape == 2) {
 			logic = true;
 		} else {
 			logic = false;

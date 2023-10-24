@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "pokefood:cherry",
+    "pokefood:lime",
+    "pokefood:green_grapes",
+    "pokefood:banana",
+    "pokefood:lemon",
+    "pokefood:black_grapes"
+  ]
+}

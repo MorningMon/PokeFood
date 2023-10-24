@@ -1,5 +1,5 @@
 {
-  "_fv": 47,
+  "_fv": 43,
   "_type": "achievement",
   "definition": {
     "achievementName": "You know you can fry vegetables too, right ?",
@@ -31,7 +31,7 @@
     ],
     "rewardFunction": "No function",
     "rewardXP": 75,
-    "achievementType": "goal",
+    "achievementType": "challenge",
     "parent": {
       "value": "CUSTOM:AdvFrying"
     },

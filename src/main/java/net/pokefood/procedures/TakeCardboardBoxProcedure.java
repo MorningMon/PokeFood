@@ -31,7 +31,7 @@ public class TakeCardboardBoxProcedure {
 			if (entity instanceof Player _player)
 				_player.closeContainer();
 			{
-				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 9;
 					final ItemStack _setstack = new ItemStack(PokefoodModItems.CARDBOARD_BOX_ITEM.get());
@@ -51,7 +51,7 @@ public class TakeCardboardBoxProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 					return _retval.get();
 				}
-			}.getItemStack(world, BlockPos.containing(x, y, z), 9));
+			}.getItemStack(world, new BlockPos(x, y, z), 9));
 			for (int index0 = 0; index0 < 9; index0++) {
 				nbItems = new Object() {
 					public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
@@ -61,7 +61,7 @@ public class TakeCardboardBoxProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 						return _retval.get();
 					}
-				}.getAmount(world, BlockPos.containing(x, y, z), (int) slot);
+				}.getAmount(world, new BlockPos(x, y, z), (int) slot);
 				ItemInSlot = (new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -70,20 +70,20 @@ public class TakeCardboardBoxProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), (int) slot));
+				}.getItemStack(world, new BlockPos(x, y, z), (int) slot));
 				{
 					ItemStack _isc = ItemForTransfer;
 					final ItemStack _setstack = ItemInSlot;
 					final int _sltid = (int) slot;
 					_setstack.setCount((int) nbItems);
 					_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
-						if (capability instanceof IItemHandlerModifiable itemHandlerModifiable) {
-							itemHandlerModifiable.setStackInSlot(_sltid, _setstack);
+						if (capability instanceof IItemHandlerModifiable) {
+							((IItemHandlerModifiable) capability).setStackInSlot(_sltid, _setstack);
 						}
 					});
 				}
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 					if (_ent != null) {
 						final int _slotid = (int) slot;
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -95,7 +95,7 @@ public class TakeCardboardBoxProcedure {
 				slot = slot + 1;
 			}
 			{
-				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 9;
 					final ItemStack _setstack = ItemForTransfer;
@@ -107,7 +107,7 @@ public class TakeCardboardBoxProcedure {
 				}
 			}
 			{
-				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockPos _bp = new BlockPos(x, y, z);
 				BlockState _bs = Blocks.AIR.defaultBlockState();
 				BlockState _bso = world.getBlockState(_bp);
 				for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {

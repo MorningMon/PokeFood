@@ -1,12 +1,10 @@
 {
-  "_fv": 47,
+  "_fv": 43,
   "_type": "item",
   "definition": {
     "renderType": 0,
     "texture": "shell",
     "customModelName": "Normal",
-    "customProperties": {},
-    "states": [],
     "name": "Shell",
     "rarity": "COMMON",
     "creativeTab": {

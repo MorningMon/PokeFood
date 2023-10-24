@@ -27,7 +27,7 @@ public class CandyMachineUpdateProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 					return _retval.get();
 				}
-			}.getAmount(world, BlockPos.containing(x, y, z), (int) slot) > 0) {
+			}.getAmount(world, new BlockPos(x, y, z), (int) slot) > 0) {
 				inventory = inventory + new Object() {
 					public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicInteger _retval = new AtomicInteger(0);
@@ -36,7 +36,7 @@ public class CandyMachineUpdateProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 						return _retval.get();
 					}
-				}.getAmount(world, BlockPos.containing(x, y, z), (int) slot);
+				}.getAmount(world, new BlockPos(x, y, z), (int) slot);
 			}
 			slot = slot + 1;
 		}
@@ -44,7 +44,7 @@ public class CandyMachineUpdateProcedure {
 			if (inventory <= nb * 64) {
 				{
 					int _value = (int) nb;
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("content") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);

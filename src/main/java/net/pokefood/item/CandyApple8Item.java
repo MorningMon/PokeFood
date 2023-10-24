@@ -14,7 +14,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class CandyApple8Item extends Item {
 	public CandyApple8Item() {
-		super(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(4).saturationMod(0.7f)
+		super(new Item.Properties().tab(PokefoodModTabs.TAB_POKE_FOOD).stacksTo(1).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(4).saturationMod(0.7f)
 
 				.build()));
 	}

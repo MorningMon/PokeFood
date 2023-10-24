@@ -1,5 +1,5 @@
 {
-  "_fv": 47,
+  "_fv": 43,
   "_type": "recipe",
   "definition": {
     "recipeType": "Crafting",
@@ -40,7 +40,7 @@
       }
     ],
     "recipeReturnStack": {
-      "value": "CUSTOM:CardboardBoxItem"
+      "value": "CUSTOM:CardboardBox"
     },
     "name": "recipe_cardboard_box",
     "namespace": "mod"

@@ -1,12 +1,10 @@
 {
-  "_fv": 47,
+  "_fv": 43,
   "_type": "item",
   "definition": {
     "renderType": 0,
     "texture": "fried_chiken_leg",
     "customModelName": "Normal",
-    "customProperties": {},
-    "states": [],
     "name": "Fried Chicken Leg",
     "rarity": "COMMON",
     "creativeTab": {

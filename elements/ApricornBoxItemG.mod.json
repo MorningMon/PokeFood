@@ -1,12 +1,10 @@
 {
-  "_fv": 47,
+  "_fv": 43,
   "_type": "item",
   "definition": {
     "renderType": 1,
     "texture": "aprijuice_g_bucket",
     "customModelName": "apricorn_box:green",
-    "customProperties": {},
-    "states": [],
     "name": "Apricorn Box",
     "rarity": "COMMON",
     "creativeTab": {

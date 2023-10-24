@@ -1,13 +1,15 @@
 
 package net.pokefood.item;
 
+import net.pokefood.init.PokefoodModTabs;
+
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Item;
 
 public class LetuceItem extends Item {
 	public LetuceItem() {
-		super(new Item.Properties().durability(8).rarity(Rarity.COMMON));
+		super(new Item.Properties().tab(PokefoodModTabs.TAB_POKE_FOOD_INGREDIENTS).durability(8).rarity(Rarity.COMMON));
 	}
 
 	@Override

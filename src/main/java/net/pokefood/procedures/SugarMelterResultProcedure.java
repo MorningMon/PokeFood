@@ -39,7 +39,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_0.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_0.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.CANDY_APPLE_0.get());
 						_setstack.setCount(1);
@@ -55,7 +55,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_1.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_1.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.CANDY_APPLE_1.get());
 						_setstack.setCount(1);
@@ -71,7 +71,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_2.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_2.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.CANDY_APPLE_2.get());
 						_setstack.setCount(1);
@@ -87,7 +87,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_3.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_3.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.CANDY_APPLE_3.get());
 						_setstack.setCount(1);
@@ -103,7 +103,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_4.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_4.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.CANDY_APPLE_4.get());
 						_setstack.setCount(1);
@@ -119,7 +119,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_5.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_5.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.CANDY_APPLE_5.get());
 						_setstack.setCount(1);
@@ -135,7 +135,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_6.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_6.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.CANDY_APPLE_6.get());
 						_setstack.setCount(1);
@@ -151,7 +151,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_7.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_7.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.CANDY_APPLE_7.get());
 						_setstack.setCount(1);
@@ -167,7 +167,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_8.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_8.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.CANDY_APPLE_8.get());
 						_setstack.setCount(1);
@@ -183,7 +183,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_9.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_9.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.CANDY_APPLE_9.get());
 						_setstack.setCount(1);
@@ -199,7 +199,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_10.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_10.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.CANDY_APPLE_10.get());
 						_setstack.setCount(1);
@@ -215,7 +215,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_11.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_11.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.CANDY_APPLE_11.get());
 						_setstack.setCount(1);
@@ -231,7 +231,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_12.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_12.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.CANDY_APPLE_12.get());
 						_setstack.setCount(1);
@@ -247,7 +247,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_13.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_13.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.CANDY_APPLE_13.get());
 						_setstack.setCount(1);
@@ -263,7 +263,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_14.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_14.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.CANDY_APPLE_14.get());
 						_setstack.setCount(1);
@@ -279,7 +279,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_15.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_15.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.CANDY_APPLE_15.get());
 						_setstack.setCount(1);
@@ -289,7 +289,7 @@ public class SugarMelterResultProcedure {
 					}
 				}
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 2;
 						final int _amount = 1;
@@ -304,7 +304,7 @@ public class SugarMelterResultProcedure {
 				}
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.azalea_leaves.fall")), SoundSource.BLOCKS, 1, 1);
+						_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.azalea_leaves.fall")), SoundSource.BLOCKS, 1, 1);
 					} else {
 						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.azalea_leaves.fall")), SoundSource.BLOCKS, 1, 1, false);
 					}
@@ -318,7 +318,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_0.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_0.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.COTTON_CANDY_0.get());
 						_setstack.setCount(1);
@@ -334,7 +334,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_1.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_1.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.COTTON_CANDY_1.get());
 						_setstack.setCount(1);
@@ -350,7 +350,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_2.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_2.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.COTTON_CANDY_2.get());
 						_setstack.setCount(1);
@@ -366,7 +366,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_3.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_3.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.COTTON_CANDY_3.get());
 						_setstack.setCount(1);
@@ -382,7 +382,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_4.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_4.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.COTTON_CANDY_4.get());
 						_setstack.setCount(1);
@@ -398,7 +398,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_5.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_5.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.COTTON_CANDY_5.get());
 						_setstack.setCount(1);
@@ -414,7 +414,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_6.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_6.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.COTTON_CANDY_6.get());
 						_setstack.setCount(1);
@@ -430,7 +430,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_7.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_7.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.COTTON_CANDY_7.get());
 						_setstack.setCount(1);
@@ -446,7 +446,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_8.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_8.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.COTTON_CANDY_8.get());
 						_setstack.setCount(1);
@@ -462,7 +462,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_9.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_9.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.COTTON_CANDY_9.get());
 						_setstack.setCount(1);
@@ -478,7 +478,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_10.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_10.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.COTTON_CANDY_10.get());
 						_setstack.setCount(1);
@@ -494,7 +494,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_11.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_11.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.COTTON_CANDY_11.get());
 						_setstack.setCount(1);
@@ -510,7 +510,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_12.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_12.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.COTTON_CANDY_12.get());
 						_setstack.setCount(1);
@@ -526,7 +526,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_13.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_13.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.COTTON_CANDY_13.get());
 						_setstack.setCount(1);
@@ -542,7 +542,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_14.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_14.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.COTTON_CANDY_14.get());
 						_setstack.setCount(1);
@@ -558,7 +558,7 @@ public class SugarMelterResultProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_15.get()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.CRYSTALIZED_SUGAR_15.get()) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = new ItemStack(PokefoodModItems.COTTON_CANDY_15.get());
 						_setstack.setCount(1);
@@ -568,7 +568,7 @@ public class SugarMelterResultProcedure {
 					}
 				}
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 2;
 						final int _amount = 1;
@@ -583,7 +583,7 @@ public class SugarMelterResultProcedure {
 				}
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.azalea_leaves.fall")), SoundSource.BLOCKS, 1, 1);
+						_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.azalea_leaves.fall")), SoundSource.BLOCKS, 1, 1);
 					} else {
 						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.azalea_leaves.fall")), SoundSource.BLOCKS, 1, 1, false);
 					}

@@ -1,12 +1,10 @@
 {
-  "_fv": 47,
+  "_fv": 43,
   "_type": "item",
   "definition": {
     "renderType": 0,
     "texture": "candy_l_1",
     "customModelName": "Normal",
-    "customProperties": {},
-    "states": [],
     "name": "Big Candy",
     "rarity": "COMMON",
     "creativeTab": {

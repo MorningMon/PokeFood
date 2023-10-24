@@ -24,10 +24,10 @@ public class PlateUpdateVisualProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 0)).getItem() == PokefoodModItems.CREPE.get()) {
+		}.getItemStack(world, new BlockPos(x, y, z), 0)).getItem() == PokefoodModItems.CREPE.get()) {
 			{
 				int _value = 1;
-				BlockPos _pos = BlockPos.containing(x, y, z);
+				BlockPos _pos = new BlockPos(x, y, z);
 				BlockState _bs = world.getBlockState(_pos);
 				if (_bs.getBlock().getStateDefinition().getProperty("food_type") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 					world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -41,8 +41,8 @@ public class PlateUpdateVisualProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 						return _retval.get();
 					}
-				}.getAmount(world, BlockPos.containing(x, y, z), 0);
-				BlockPos _pos = BlockPos.containing(x, y, z);
+				}.getAmount(world, new BlockPos(x, y, z), 0);
+				BlockPos _pos = new BlockPos(x, y, z);
 				BlockState _bs = world.getBlockState(_pos);
 				if (_bs.getBlock().getStateDefinition().getProperty("number_of_item") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 					world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -55,10 +55,10 @@ public class PlateUpdateVisualProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 0)).getItem() == PokefoodModItems.CREPE_SUGAR.get()) {
+		}.getItemStack(world, new BlockPos(x, y, z), 0)).getItem() == PokefoodModItems.CREPE_SUGAR.get()) {
 			{
 				int _value = 2;
-				BlockPos _pos = BlockPos.containing(x, y, z);
+				BlockPos _pos = new BlockPos(x, y, z);
 				BlockState _bs = world.getBlockState(_pos);
 				if (_bs.getBlock().getStateDefinition().getProperty("food_type") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 					world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -72,8 +72,8 @@ public class PlateUpdateVisualProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 						return _retval.get();
 					}
-				}.getAmount(world, BlockPos.containing(x, y, z), 0);
-				BlockPos _pos = BlockPos.containing(x, y, z);
+				}.getAmount(world, new BlockPos(x, y, z), 0);
+				BlockPos _pos = new BlockPos(x, y, z);
 				BlockState _bs = world.getBlockState(_pos);
 				if (_bs.getBlock().getStateDefinition().getProperty("number_of_item") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 					world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -86,10 +86,10 @@ public class PlateUpdateVisualProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 0)).getItem() == PokefoodModItems.CREPE_CHOCOLATE.get()) {
+		}.getItemStack(world, new BlockPos(x, y, z), 0)).getItem() == PokefoodModItems.CREPE_CHOCOLATE.get()) {
 			{
 				int _value = 3;
-				BlockPos _pos = BlockPos.containing(x, y, z);
+				BlockPos _pos = new BlockPos(x, y, z);
 				BlockState _bs = world.getBlockState(_pos);
 				if (_bs.getBlock().getStateDefinition().getProperty("food_type") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 					world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -103,8 +103,8 @@ public class PlateUpdateVisualProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 						return _retval.get();
 					}
-				}.getAmount(world, BlockPos.containing(x, y, z), 0);
-				BlockPos _pos = BlockPos.containing(x, y, z);
+				}.getAmount(world, new BlockPos(x, y, z), 0);
+				BlockPos _pos = new BlockPos(x, y, z);
 				BlockState _bs = world.getBlockState(_pos);
 				if (_bs.getBlock().getStateDefinition().getProperty("number_of_item") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 					world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -117,10 +117,10 @@ public class PlateUpdateVisualProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 0)).getItem() == PokefoodModItems.CREPE_WHIPPED_CREAM.get()) {
+		}.getItemStack(world, new BlockPos(x, y, z), 0)).getItem() == PokefoodModItems.CREPE_WHIPPED_CREAM.get()) {
 			{
 				int _value = 4;
-				BlockPos _pos = BlockPos.containing(x, y, z);
+				BlockPos _pos = new BlockPos(x, y, z);
 				BlockState _bs = world.getBlockState(_pos);
 				if (_bs.getBlock().getStateDefinition().getProperty("food_type") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 					world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -134,8 +134,8 @@ public class PlateUpdateVisualProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 						return _retval.get();
 					}
-				}.getAmount(world, BlockPos.containing(x, y, z), 0);
-				BlockPos _pos = BlockPos.containing(x, y, z);
+				}.getAmount(world, new BlockPos(x, y, z), 0);
+				BlockPos _pos = new BlockPos(x, y, z);
 				BlockState _bs = world.getBlockState(_pos);
 				if (_bs.getBlock().getStateDefinition().getProperty("number_of_item") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 					world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -148,10 +148,10 @@ public class PlateUpdateVisualProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 0)).getItem() == PokefoodModItems.CREPE_SPICY.get()) {
+		}.getItemStack(world, new BlockPos(x, y, z), 0)).getItem() == PokefoodModItems.CREPE_SPICY.get()) {
 			{
 				int _value = 5;
-				BlockPos _pos = BlockPos.containing(x, y, z);
+				BlockPos _pos = new BlockPos(x, y, z);
 				BlockState _bs = world.getBlockState(_pos);
 				if (_bs.getBlock().getStateDefinition().getProperty("food_type") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 					world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -165,8 +165,8 @@ public class PlateUpdateVisualProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 						return _retval.get();
 					}
-				}.getAmount(world, BlockPos.containing(x, y, z), 0);
-				BlockPos _pos = BlockPos.containing(x, y, z);
+				}.getAmount(world, new BlockPos(x, y, z), 0);
+				BlockPos _pos = new BlockPos(x, y, z);
 				BlockState _bs = world.getBlockState(_pos);
 				if (_bs.getBlock().getStateDefinition().getProperty("number_of_item") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 					world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -179,17 +179,17 @@ public class PlateUpdateVisualProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, BlockPos.containing(x, y, z), 0) == 0) {
+		}.getAmount(world, new BlockPos(x, y, z), 0) == 0) {
 			{
 				int _value = 0;
-				BlockPos _pos = BlockPos.containing(x, y, z);
+				BlockPos _pos = new BlockPos(x, y, z);
 				BlockState _bs = world.getBlockState(_pos);
 				if (_bs.getBlock().getStateDefinition().getProperty("food_type") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 					world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 			}
 			{
 				int _value = 0;
-				BlockPos _pos = BlockPos.containing(x, y, z);
+				BlockPos _pos = new BlockPos(x, y, z);
 				BlockState _bs = world.getBlockState(_pos);
 				if (_bs.getBlock().getStateDefinition().getProperty("number_of_item") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 					world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);

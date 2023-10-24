@@ -1,5 +1,5 @@
 modLoader="javafml"
-loaderVersion="[47,)"
+loaderVersion="[43,)"
 license="Mozilla Public License 2.0"
 
 [[mods]]
@@ -15,7 +15,7 @@ description="Food to be used with cobblemon (may contain traces of calcuim !)"
 [[dependencies.pokefood]]
     modId="minecraft"
     mandatory=true
-    versionRange="[1.20.1]"
+    versionRange="[1.19.2]"
     ordering="NONE"
     side="BOTH"
 

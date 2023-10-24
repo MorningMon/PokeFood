@@ -14,7 +14,7 @@ import net.minecraft.world.entity.LivingEntity;
 
 public class CottonCandy13Item extends Item {
 	public CottonCandy13Item() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(2).saturationMod(0.5f)
+		super(new Item.Properties().tab(PokefoodModTabs.TAB_POKE_FOOD).stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(2).saturationMod(0.5f)
 
 				.build()));
 	}

@@ -9,11 +9,11 @@ public class PlantsValidPlacementProcedure {
 	public static boolean execute(LevelAccessor world, double x, double y, double z) {
 		boolean returned = false;
 		returned = true;
-		if (!((world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == Blocks.GRASS_BLOCK) && !((world.getBlockState(BlockPos.containing(x, y - 1, z))).getBlock() == Blocks.DIRT)) {
-			world.levelEvent(2001, BlockPos.containing(x, y, z), Block.getId((world.getBlockState(BlockPos.containing(x, y, z)))));
+		if (!((world.getBlockState(new BlockPos(x, y - 1, z))).getBlock() == Blocks.GRASS_BLOCK) && !((world.getBlockState(new BlockPos(x, y - 1, z))).getBlock() == Blocks.DIRT)) {
+			world.levelEvent(2001, new BlockPos(x, y, z), Block.getId((world.getBlockState(new BlockPos(x, y, z)))));
 			{
-				BlockPos _pos = BlockPos.containing(x, y, z);
-				Block.dropResources(world.getBlockState(_pos), world, BlockPos.containing(x, y, z), null);
+				BlockPos _pos = new BlockPos(x, y, z);
+				Block.dropResources(world.getBlockState(_pos), world, new BlockPos(x, y, z), null);
 				world.destroyBlock(_pos, false);
 			}
 			returned = false;

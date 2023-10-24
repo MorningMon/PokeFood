@@ -1,12 +1,10 @@
 {
-  "_fv": 47,
+  "_fv": 43,
   "_type": "item",
   "definition": {
     "renderType": 0,
     "texture": "white_grapes",
     "customModelName": "Normal",
-    "customProperties": {},
-    "states": [],
     "name": "Green Grapes",
     "rarity": "COMMON",
     "creativeTab": {

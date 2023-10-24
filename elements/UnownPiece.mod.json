@@ -1,12 +1,10 @@
 {
-  "_fv": 47,
+  "_fv": 43,
   "_type": "item",
   "definition": {
     "renderType": 0,
     "texture": "unown_piece",
     "customModelName": "Normal",
-    "customProperties": {},
-    "states": [],
     "name": "Unown Piece",
     "rarity": "COMMON",
     "creativeTab": {

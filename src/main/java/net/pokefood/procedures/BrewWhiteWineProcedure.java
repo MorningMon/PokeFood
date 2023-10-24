@@ -24,7 +24,7 @@ public class BrewWhiteWineProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 0)).getItem() == Items.BUCKET && (new Object() {
+		}.getItemStack(world, new BlockPos(x, y, z), 0)).getItem() == Items.BUCKET && (new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -32,7 +32,7 @@ public class BrewWhiteWineProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 1)).getItem() == PokefoodModItems.GREEN_GRAPES.get() && (new Object() {
+		}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == PokefoodModItems.GREEN_GRAPES.get() && (new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -40,7 +40,7 @@ public class BrewWhiteWineProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == PokefoodModItems.GREEN_GRAPES.get() && new Object() {
+		}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == PokefoodModItems.GREEN_GRAPES.get() && new Object() {
 			public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicInteger _retval = new AtomicInteger(0);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -48,7 +48,7 @@ public class BrewWhiteWineProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 				return _retval.get();
 			}
-		}.getAmount(world, BlockPos.containing(x, y, z), 3) == 0 && (new Object() {
+		}.getAmount(world, new BlockPos(x, y, z), 3) == 0 && (new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -56,7 +56,7 @@ public class BrewWhiteWineProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 4)).getItem() == PokefoodModItems.GREEN_GRAPES.get() && (new Object() {
+		}.getItemStack(world, new BlockPos(x, y, z), 4)).getItem() == PokefoodModItems.GREEN_GRAPES.get() && (new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -64,7 +64,7 @@ public class BrewWhiteWineProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 5)).getItem() == PokefoodModItems.GREEN_GRAPES.get() && (new Object() {
+		}.getItemStack(world, new BlockPos(x, y, z), 5)).getItem() == PokefoodModItems.GREEN_GRAPES.get() && (new Object() {
 			public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 				AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 				BlockEntity _ent = world.getBlockEntity(pos);
@@ -72,7 +72,7 @@ public class BrewWhiteWineProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 6)).getItem() == PokefoodModItems.GREEN_GRAPES.get()) {
+		}.getItemStack(world, new BlockPos(x, y, z), 6)).getItem() == PokefoodModItems.GREEN_GRAPES.get()) {
 			logic = true;
 		} else {
 			logic = false;

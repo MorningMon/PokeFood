@@ -50,15 +50,15 @@ public class PlaceCardboardBoxProcedure {
 		double nbItemInSlot = 0;
 		ItemStack itemInSlot = ItemStack.EMPTY;
 		if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModItems.CARDBOARD_BOX_ITEM.get()
-				&& (world.getBlockState(BlockPos.containing(x, y + 1, z))).is(BlockTags.create(new ResourceLocation("forge:replaceable_blocks"))) && entity.isShiftKeyDown()) {
+				&& (world.getBlockState(new BlockPos(x, y + 1, z))).is(BlockTags.create(new ResourceLocation("forge:replaceable_blocks"))) && entity.isShiftKeyDown()) {
 			if (entity instanceof Player _player)
 				_player.closeContainer();
 			if (entity instanceof LivingEntity _entity)
 				_entity.swing(InteractionHand.MAIN_HAND, true);
-			world.setBlock(BlockPos.containing(x, y + 1, z), PokefoodModBlocks.CARDBOARD_BOX.get().defaultBlockState(), 3);
+			world.setBlock(new BlockPos(x, y + 1, z), PokefoodModBlocks.CARDBOARD_BOX.get().defaultBlockState(), 3);
 			{
 				Direction _dir = ((entity.getDirection()).getOpposite());
-				BlockPos _pos = BlockPos.containing(x, y + 1, z);
+				BlockPos _pos = new BlockPos(x, y + 1, z);
 				BlockState _bs = world.getBlockState(_pos);
 				Property<?> _property = _bs.getBlock().getStateDefinition().getProperty("facing");
 				if (_property instanceof DirectionProperty _dp && _dp.getPossibleValues().contains(_dir)) {
@@ -80,7 +80,7 @@ public class PlaceCardboardBoxProcedure {
 						return _retval.get();
 					}
 				}.getItemStack((int) slot, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)));
-				nbItemInSlot = (new Object() {
+				nbItemInSlot = ((new Object() {
 					public ItemStack getItemStack(int sltid, ItemStack _isc) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						_isc.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -88,9 +88,9 @@ public class PlaceCardboardBoxProcedure {
 						});
 						return _retval.get();
 					}
-				}.getItemStack((int) slot, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY))).getCount();
+				}.getItemStack((int) slot, (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)))).getCount();
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y + 1, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y + 1, z));
 					if (_ent != null) {
 						final int _slotid = (int) slot;
 						final ItemStack _setstack = itemInSlot;

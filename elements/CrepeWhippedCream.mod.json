@@ -1,12 +1,10 @@
 {
-  "_fv": 47,
+  "_fv": 43,
   "_type": "item",
   "definition": {
     "renderType": 0,
     "texture": "crepe_whipped",
     "customModelName": "Normal",
-    "customProperties": {},
-    "states": [],
     "name": "Crepe with Whipped Cream",
     "rarity": "COMMON",
     "creativeTab": {

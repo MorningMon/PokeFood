@@ -4,6 +4,7 @@ package net.pokefood.item;
 import net.pokefood.procedures.CalcuimPlantingProcedure;
 import net.pokefood.procedures.BecomingDrunkProcedure;
 import net.pokefood.procedures.AlcoholUnlockAdvProcedure;
+import net.pokefood.init.PokefoodModTabs;
 import net.pokefood.init.PokefoodModItems;
 
 import net.minecraft.world.level.Level;
@@ -18,7 +19,9 @@ import net.minecraft.world.entity.Entity;
 
 public class WineGlassRoseItem extends Item {
 	public WineGlassRoseItem() {
-		super(new Item.Properties().stacksTo(1).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(6).saturationMod(0.5f).alwaysEat().build()));
+		super(new Item.Properties().tab(PokefoodModTabs.TAB_POKE_FOOD_DRINKS).stacksTo(1).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(6).saturationMod(0.5f).alwaysEat()
+
+				.build()));
 	}
 
 	@Override
@@ -43,6 +46,7 @@ public class WineGlassRoseItem extends Item {
 		double x = entity.getX();
 		double y = entity.getY();
 		double z = entity.getZ();
+
 		BecomingDrunkProcedure.execute(entity);
 		if (itemstack.isEmpty()) {
 			return retval;
@@ -58,7 +62,7 @@ public class WineGlassRoseItem extends Item {
 	@Override
 	public boolean onEntitySwing(ItemStack itemstack, LivingEntity entity) {
 		boolean retval = super.onEntitySwing(itemstack, entity);
-		CalcuimPlantingProcedure.execute(entity.level(), entity.getX(), entity.getY(), entity.getZ(), entity);
+		CalcuimPlantingProcedure.execute(entity.level, entity.getX(), entity.getY(), entity.getZ(), entity);
 		return retval;
 	}
 

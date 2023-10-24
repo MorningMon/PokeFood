@@ -1,6 +1,7 @@
 
 package net.pokefood.item;
 
+import net.pokefood.init.PokefoodModTabs;
 import net.pokefood.init.PokefoodModFluids;
 
 import net.minecraft.world.item.Rarity;
@@ -10,6 +11,6 @@ import net.minecraft.world.item.BucketItem;
 
 public class ApriJuiceRItem extends BucketItem {
 	public ApriJuiceRItem() {
-		super(PokefoodModFluids.APRIJUICE_R, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).rarity(Rarity.COMMON));
+		super(PokefoodModFluids.APRIJUICE_R, new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).rarity(Rarity.COMMON).tab(PokefoodModTabs.TAB_POKE_FOOD_INGREDIENTS));
 	}
 }

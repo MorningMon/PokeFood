@@ -15,7 +15,7 @@ import java.util.List;
 
 public class PuffFrostedHoneyItem extends Item {
 	public PuffFrostedHoneyItem() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(5).saturationMod(0.4f).alwaysEat()
+		super(new Item.Properties().tab(PokefoodModTabs.TAB_POKE_FOOD).stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(5).saturationMod(0.4f).alwaysEat()
 
 				.build()));
 	}

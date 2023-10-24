@@ -1,0 +1,16 @@
+{
+	"type": "create:mixing",
+    "ingredients": [
+		{
+			"item": "cobblemon:white_apricorn"
+        }
+    ], 
+        "results": [
+		{
+			"fluid": "pokefood:aprijuice_w",
+			"nbt": {},
+			"amount": 250
+        }
+    ],
+	"heatRequirement": "none"
+}

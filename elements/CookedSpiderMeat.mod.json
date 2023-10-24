@@ -1,12 +1,10 @@
 {
-  "_fv": 47,
+  "_fv": 43,
   "_type": "item",
   "definition": {
     "renderType": 0,
     "texture": "cooked_spider_meat",
     "customModelName": "Normal",
-    "customProperties": {},
-    "states": [],
     "name": "Cooked spider meat",
     "rarity": "COMMON",
     "creativeTab": {

@@ -1,5 +1,5 @@
 {
-  "_fv": 47,
+  "_fv": 43,
   "_type": "plant",
   "definition": {
     "renderType": 2,
@@ -11,10 +11,12 @@
     "tintType": "No tint",
     "isItemTinted": false,
     "plantType": "normal",
+    "staticPlantGenerationType": "Grass",
     "suspiciousStewEffect": "SPEED",
     "suspiciousStewDuration": 100,
     "growapableSpawnType": "Crop",
     "growapableMaxHeight": 1,
+    "doublePlantGenerationType": "Flower",
     "customBoundingBox": true,
     "disableOffset": false,
     "boundingBoxes": [
@@ -84,7 +86,6 @@
     "frequencyOnChunks": 5,
     "spawnWorldTypes": [],
     "restrictionBiomes": [],
-    "generationType": "Grass",
     "patchSize": 64,
     "generateAtAnyHeight": false,
     "onTickUpdate": {

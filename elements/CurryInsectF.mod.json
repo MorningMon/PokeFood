@@ -1,16 +1,14 @@
 {
-  "_fv": 47,
+  "_fv": 43,
   "_type": "item",
   "definition": {
     "renderType": 0,
     "texture": "curry_insect_f",
     "customModelName": "Normal",
-    "customProperties": {},
-    "states": [],
     "name": "Fried Bug Curry",
     "rarity": "COMMON",
     "creativeTab": {
-      "value": "CUSTOM:PokeFoodCurries"
+      "value": "CUSTOM:PokeFood"
     },
     "stackSize": 1,
     "enchantability": 0,

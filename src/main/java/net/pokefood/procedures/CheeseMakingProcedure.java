@@ -26,20 +26,20 @@ public class CheeseMakingProcedure {
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 				return _retval.get();
 			}
-		}.getItemStack(world, BlockPos.containing(x, y, z), 0)).getItem() == PokefoodModItems.BAG_CURD.get()) {
-			time = ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock().getStateDefinition().getProperty("age") instanceof IntegerProperty _getip3 ? (world.getBlockState(BlockPos.containing(x, y, z))).getValue(_getip3) : -1) + 1;
+		}.getItemStack(world, new BlockPos(x, y, z), 0)).getItem() == PokefoodModItems.BAG_CURD.get()) {
+			time = ((world.getBlockState(new BlockPos(x, y, z))).getBlock().getStateDefinition().getProperty("age") instanceof IntegerProperty _getip3 ? (world.getBlockState(new BlockPos(x, y, z))).getValue(_getip3) : -1) + 1;
 			{
 				int _value = (int) time;
-				BlockPos _pos = BlockPos.containing(x, y, z);
+				BlockPos _pos = new BlockPos(x, y, z);
 				BlockState _bs = world.getBlockState(_pos);
 				if (_bs.getBlock().getStateDefinition().getProperty("age") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 					world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 			}
 		}
 		if (time >= 6) {
-			if (((world.getBlockState(BlockPos.containing(x, y, z))).getBlock().getStateDefinition().getProperty("cheese_type") instanceof IntegerProperty _getip6 ? (world.getBlockState(BlockPos.containing(x, y, z))).getValue(_getip6) : -1) == 1) {
+			if (((world.getBlockState(new BlockPos(x, y, z))).getBlock().getStateDefinition().getProperty("cheese_type") instanceof IntegerProperty _getip6 ? (world.getBlockState(new BlockPos(x, y, z))).getValue(_getip6) : -1) == 1) {
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 0;
 						final ItemStack _setstack = new ItemStack(PokefoodModBlocks.CHEESE_FULL_0.get());
@@ -50,11 +50,9 @@ public class CheeseMakingProcedure {
 						});
 					}
 				}
-			} else if (((world.getBlockState(BlockPos.containing(x, y, z))).getBlock().getStateDefinition().getProperty("cheese_type") instanceof IntegerProperty _getip9
-					? (world.getBlockState(BlockPos.containing(x, y, z))).getValue(_getip9)
-					: -1) == 2) {
+			} else if (((world.getBlockState(new BlockPos(x, y, z))).getBlock().getStateDefinition().getProperty("cheese_type") instanceof IntegerProperty _getip9 ? (world.getBlockState(new BlockPos(x, y, z))).getValue(_getip9) : -1) == 2) {
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 0;
 						final ItemStack _setstack = new ItemStack(PokefoodModBlocks.CHEESE_FULL_1.get());
@@ -65,11 +63,9 @@ public class CheeseMakingProcedure {
 						});
 					}
 				}
-			} else if (((world.getBlockState(BlockPos.containing(x, y, z))).getBlock().getStateDefinition().getProperty("cheese_type") instanceof IntegerProperty _getip12
-					? (world.getBlockState(BlockPos.containing(x, y, z))).getValue(_getip12)
-					: -1) == 3) {
+			} else if (((world.getBlockState(new BlockPos(x, y, z))).getBlock().getStateDefinition().getProperty("cheese_type") instanceof IntegerProperty _getip12 ? (world.getBlockState(new BlockPos(x, y, z))).getValue(_getip12) : -1) == 3) {
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 0;
 						final ItemStack _setstack = new ItemStack(PokefoodModBlocks.CHEESE_FULL_2.get());
@@ -80,11 +76,9 @@ public class CheeseMakingProcedure {
 						});
 					}
 				}
-			} else if (((world.getBlockState(BlockPos.containing(x, y, z))).getBlock().getStateDefinition().getProperty("cheese_type") instanceof IntegerProperty _getip15
-					? (world.getBlockState(BlockPos.containing(x, y, z))).getValue(_getip15)
-					: -1) == 4) {
+			} else if (((world.getBlockState(new BlockPos(x, y, z))).getBlock().getStateDefinition().getProperty("cheese_type") instanceof IntegerProperty _getip15 ? (world.getBlockState(new BlockPos(x, y, z))).getValue(_getip15) : -1) == 4) {
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 0;
 						final ItemStack _setstack = new ItemStack(PokefoodModBlocks.CHEESE_FULL_3.get());
@@ -95,11 +89,9 @@ public class CheeseMakingProcedure {
 						});
 					}
 				}
-			} else if (((world.getBlockState(BlockPos.containing(x, y, z))).getBlock().getStateDefinition().getProperty("cheese_type") instanceof IntegerProperty _getip18
-					? (world.getBlockState(BlockPos.containing(x, y, z))).getValue(_getip18)
-					: -1) == 5) {
+			} else if (((world.getBlockState(new BlockPos(x, y, z))).getBlock().getStateDefinition().getProperty("cheese_type") instanceof IntegerProperty _getip18 ? (world.getBlockState(new BlockPos(x, y, z))).getValue(_getip18) : -1) == 5) {
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 0;
 						final ItemStack _setstack = new ItemStack(PokefoodModBlocks.CHEESE_FULL_4.get());
@@ -110,11 +102,9 @@ public class CheeseMakingProcedure {
 						});
 					}
 				}
-			} else if (((world.getBlockState(BlockPos.containing(x, y, z))).getBlock().getStateDefinition().getProperty("cheese_type") instanceof IntegerProperty _getip21
-					? (world.getBlockState(BlockPos.containing(x, y, z))).getValue(_getip21)
-					: -1) == 6) {
+			} else if (((world.getBlockState(new BlockPos(x, y, z))).getBlock().getStateDefinition().getProperty("cheese_type") instanceof IntegerProperty _getip21 ? (world.getBlockState(new BlockPos(x, y, z))).getValue(_getip21) : -1) == 6) {
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 0;
 						final ItemStack _setstack = new ItemStack(PokefoodModBlocks.CHEESE_FULL_5.get());

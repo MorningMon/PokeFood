@@ -23,7 +23,6 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.core.BlockPos;
 import net.minecraft.client.Minecraft;
@@ -37,10 +36,10 @@ public class GrapeVinePlantProcedure {
 			return;
 		if (((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).is(ItemTags.create(new ResourceLocation("minecraft:wooden_fences")))
 				|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModBlocks.BANANA_FENCE.get().asItem())
-				&& !((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.GRAPE_VINE_0.get()) && !((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.GRAPE_VINE_1.get())
-				&& !((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.GRAPE_VINE_2.get())) {
+				&& !((world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.GRAPE_VINE_0.get()) && !((world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.GRAPE_VINE_1.get())
+				&& !((world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.GRAPE_VINE_2.get())) {
 			{
-				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 0;
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -49,9 +48,9 @@ public class GrapeVinePlantProcedure {
 					});
 				}
 			}
-			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.GRAPE_SPROUT.get()) {
+			if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.GRAPE_SPROUT.get()) {
 				{
-					BlockPos _bp = BlockPos.containing(x, y, z);
+					BlockPos _bp = new BlockPos(x, y, z);
 					BlockState _bs = PokefoodModBlocks.GRAPE_VINE_0.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -66,14 +65,14 @@ public class GrapeVinePlantProcedure {
 				}
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wood.place")), SoundSource.NEUTRAL, 1, 1);
+						_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wood.place")), SoundSource.NEUTRAL, 1, 1);
 					} else {
 						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wood.place")), SoundSource.NEUTRAL, 1, 1, false);
 					}
 				}
-			} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.GRAPE_SPROUT_1.get()) {
+			} else if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.GRAPE_SPROUT_1.get()) {
 				{
-					BlockPos _bp = BlockPos.containing(x, y, z);
+					BlockPos _bp = new BlockPos(x, y, z);
 					BlockState _bs = PokefoodModBlocks.GRAPE_VINE_1.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -88,14 +87,14 @@ public class GrapeVinePlantProcedure {
 				}
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wood.place")), SoundSource.BLOCKS, 1, 1);
+						_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wood.place")), SoundSource.BLOCKS, 1, 1);
 					} else {
 						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wood.place")), SoundSource.BLOCKS, 1, 1, false);
 					}
 				}
-			} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.GRAPE_SPROUT_2.get()) {
+			} else if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.GRAPE_SPROUT_2.get()) {
 				{
-					BlockPos _bp = BlockPos.containing(x, y, z);
+					BlockPos _bp = new BlockPos(x, y, z);
 					BlockState _bs = PokefoodModBlocks.GRAPE_VINE_2.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -110,7 +109,7 @@ public class GrapeVinePlantProcedure {
 				}
 				if (world instanceof Level _level) {
 					if (!_level.isClientSide()) {
-						_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wood.place")), SoundSource.BLOCKS, 1, 1);
+						_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wood.place")), SoundSource.BLOCKS, 1, 1);
 					} else {
 						_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wood.place")), SoundSource.BLOCKS, 1, 1, false);
 					}
@@ -119,7 +118,7 @@ public class GrapeVinePlantProcedure {
 			if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Blocks.OAK_FENCE.asItem()) {
 				{
 					int _value = 1;
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("fence") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -127,7 +126,7 @@ public class GrapeVinePlantProcedure {
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Blocks.SPRUCE_FENCE.asItem()) {
 				{
 					int _value = 2;
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("fence") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -135,7 +134,7 @@ public class GrapeVinePlantProcedure {
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Blocks.BIRCH_FENCE.asItem()) {
 				{
 					int _value = 3;
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("fence") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -143,7 +142,7 @@ public class GrapeVinePlantProcedure {
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Blocks.JUNGLE_FENCE.asItem()) {
 				{
 					int _value = 4;
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("fence") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -151,7 +150,7 @@ public class GrapeVinePlantProcedure {
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Blocks.ACACIA_FENCE.asItem()) {
 				{
 					int _value = 5;
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("fence") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -159,7 +158,7 @@ public class GrapeVinePlantProcedure {
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Blocks.DARK_OAK_FENCE.asItem()) {
 				{
 					int _value = 6;
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("fence") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -167,7 +166,7 @@ public class GrapeVinePlantProcedure {
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Blocks.CRIMSON_FENCE.asItem()) {
 				{
 					int _value = 7;
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("fence") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -175,7 +174,7 @@ public class GrapeVinePlantProcedure {
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Blocks.WARPED_FENCE.asItem()) {
 				{
 					int _value = 8;
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("fence") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -183,7 +182,7 @@ public class GrapeVinePlantProcedure {
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Blocks.MANGROVE_FENCE.asItem()) {
 				{
 					int _value = 9;
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("fence") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -191,7 +190,7 @@ public class GrapeVinePlantProcedure {
 			} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModBlocks.BANANA_FENCE.get().asItem()) {
 				{
 					int _value = 10;
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("fence") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -199,7 +198,7 @@ public class GrapeVinePlantProcedure {
 			} else {
 				{
 					int _value = 0;
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("fence") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -208,7 +207,7 @@ public class GrapeVinePlantProcedure {
 					public boolean checkGamemode(Entity _ent) {
 						if (_ent instanceof ServerPlayer _serverPlayer) {
 							return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-						} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+						} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
 							return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
 									&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
 						}
@@ -217,7 +216,7 @@ public class GrapeVinePlantProcedure {
 				}.checkGamemode(entity))) {
 					if (entity instanceof LivingEntity _entity) {
 						ItemStack _setstack = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY);
-						_setstack.setCount((int) ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getCount() + 1));
+						_setstack.setCount((int) (((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)).getCount() + 1));
 						_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack);
 						if (_entity instanceof Player _player)
 							_player.getInventory().setChanged();
@@ -228,7 +227,7 @@ public class GrapeVinePlantProcedure {
 				public boolean checkGamemode(Entity _ent) {
 					if (_ent instanceof ServerPlayer _serverPlayer) {
 						return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-					} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+					} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
 						return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
 								&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
 					}
@@ -237,7 +236,7 @@ public class GrapeVinePlantProcedure {
 			}.checkGamemode(entity))) {
 				if (entity instanceof LivingEntity _entity) {
 					ItemStack _setstack = (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY);
-					_setstack.setCount((int) ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getCount() - 1));
+					_setstack.setCount((int) (((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY)).getCount() - 1));
 					_entity.setItemInHand(InteractionHand.MAIN_HAND, _setstack);
 					if (_entity instanceof Player _player)
 						_player.getInventory().setChanged();
@@ -246,20 +245,20 @@ public class GrapeVinePlantProcedure {
 			GrapeVineUpdateFenceProcedure.execute(world, x, y, z);
 		} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == ItemStack.EMPTY.getItem()
 				&& (blockstate.getBlock().getStateDefinition().getProperty("grapes") instanceof IntegerProperty _getip68 ? blockstate.getValue(_getip68) : -1) <= 1
-				&& ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.GRAPE_VINE_0.get() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.GRAPE_VINE_1.get()
-						|| (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.GRAPE_VINE_2.get())) {
+				&& ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.GRAPE_VINE_0.get() || (world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.GRAPE_VINE_1.get()
+						|| (world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.GRAPE_VINE_2.get())) {
 			if (!(new Object() {
 				public boolean checkGamemode(Entity _ent) {
 					if (_ent instanceof ServerPlayer _serverPlayer) {
 						return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-					} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+					} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
 						return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
 								&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
 					}
 					return false;
 				}
 			}.checkGamemode(entity))) {
-				if (world instanceof ServerLevel _level) {
+				if (world instanceof Level _level && !_level.isClientSide()) {
 					ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, (new Object() {
 						public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 							AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -268,13 +267,13 @@ public class GrapeVinePlantProcedure {
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 							return _retval.get();
 						}
-					}.getItemStack(world, BlockPos.containing(x, y, z), 0)));
+					}.getItemStack(world, new BlockPos(x, y, z), 0)));
 					entityToSpawn.setPickUpDelay(10);
 					_level.addFreshEntity(entityToSpawn);
 				}
 			}
 			{
-				BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+				BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 				if (_ent != null) {
 					final int _slotid = 0;
 					_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -283,9 +282,9 @@ public class GrapeVinePlantProcedure {
 					});
 				}
 			}
-			if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.GRAPE_VINE_0.get()) {
+			if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.GRAPE_VINE_0.get()) {
 				{
-					BlockPos _bp = BlockPos.containing(x, y, z);
+					BlockPos _bp = new BlockPos(x, y, z);
 					BlockState _bs = PokefoodModBlocks.GRAPE_SPROUT.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -298,9 +297,9 @@ public class GrapeVinePlantProcedure {
 					}
 					world.setBlock(_bp, _bs, 3);
 				}
-			} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.GRAPE_VINE_1.get()) {
+			} else if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.GRAPE_VINE_1.get()) {
 				{
-					BlockPos _bp = BlockPos.containing(x, y, z);
+					BlockPos _bp = new BlockPos(x, y, z);
 					BlockState _bs = PokefoodModBlocks.GRAPE_SPROUT_1.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {
@@ -313,9 +312,9 @@ public class GrapeVinePlantProcedure {
 					}
 					world.setBlock(_bp, _bs, 3);
 				}
-			} else if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.GRAPE_VINE_2.get()) {
+			} else if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.GRAPE_VINE_2.get()) {
 				{
-					BlockPos _bp = BlockPos.containing(x, y, z);
+					BlockPos _bp = new BlockPos(x, y, z);
 					BlockState _bs = PokefoodModBlocks.GRAPE_SPROUT_2.get().defaultBlockState();
 					BlockState _bso = world.getBlockState(_bp);
 					for (Map.Entry<Property<?>, Comparable<?>> entry : _bso.getValues().entrySet()) {

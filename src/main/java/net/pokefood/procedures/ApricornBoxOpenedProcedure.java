@@ -9,7 +9,7 @@ public class ApricornBoxOpenedProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
 		double slot = 0;
 		{
-			BlockPos _pos = BlockPos.containing(x, y, z);
+			BlockPos _pos = new BlockPos(x, y, z);
 			BlockState _bs = world.getBlockState(_pos);
 			if (_bs.getBlock().getStateDefinition().getProperty("open") instanceof BooleanProperty _booleanProp)
 				world.setBlock(_pos, _bs.setValue(_booleanProp, true), 3);

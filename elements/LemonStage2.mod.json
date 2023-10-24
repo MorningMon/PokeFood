@@ -1,5 +1,5 @@
 {
-  "_fv": 47,
+  "_fv": 43,
   "_type": "plant",
   "definition": {
     "renderType": 2,
@@ -11,10 +11,12 @@
     "tintType": "No tint",
     "isItemTinted": false,
     "plantType": "normal",
+    "staticPlantGenerationType": "Grass",
     "suspiciousStewEffect": "MINING_FATIGUE",
     "suspiciousStewDuration": 100,
     "growapableSpawnType": "Plains",
     "growapableMaxHeight": 3,
+    "doublePlantGenerationType": "Flower",
     "customBoundingBox": true,
     "disableOffset": false,
     "boundingBoxes": [
@@ -100,7 +102,6 @@
         "value": "meadow"
       }
     ],
-    "generationType": "Grass",
     "patchSize": 4,
     "generateAtAnyHeight": true,
     "onTickUpdate": {

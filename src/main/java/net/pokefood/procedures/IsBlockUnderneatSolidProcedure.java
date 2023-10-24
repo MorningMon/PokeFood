@@ -12,11 +12,11 @@ import net.minecraft.core.BlockPos;
 public class IsBlockUnderneatSolidProcedure {
 	public static boolean execute(LevelAccessor world, double x, double y, double z, BlockState blockstate) {
 		boolean returned = false;
-		if (world.getBlockState(BlockPos.containing(x, y - 1, z)).isFaceSturdy(world, BlockPos.containing(x, y - 1, z), Direction.UP) == true
-				&& ((world.getBlockState(BlockPos.containing(x, y, z))).is(BlockTags.create(new ResourceLocation("forge:replaceable_blocks"))) || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == blockstate.getBlock())) {
+		if (world.getBlockState(new BlockPos(x, y - 1, z)).isFaceSturdy(world, new BlockPos(x, y - 1, z), Direction.UP) == true
+				&& ((world.getBlockState(new BlockPos(x, y, z))).is(BlockTags.create(new ResourceLocation("forge:replaceable_blocks"))) || (world.getBlockState(new BlockPos(x, y, z))).getBlock() == blockstate.getBlock())) {
 			returned = true;
 			if (!world.isClientSide()) {
-				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockPos _bp = new BlockPos(x, y, z);
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)
@@ -27,7 +27,7 @@ public class IsBlockUnderneatSolidProcedure {
 		} else {
 			returned = false;
 			if (!world.isClientSide()) {
-				BlockPos _bp = BlockPos.containing(x, y, z);
+				BlockPos _bp = new BlockPos(x, y, z);
 				BlockEntity _blockEntity = world.getBlockEntity(_bp);
 				BlockState _bs = world.getBlockState(_bp);
 				if (_blockEntity != null)

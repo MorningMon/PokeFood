@@ -28,7 +28,7 @@ public class CandyBagCraftProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 					return _retval.get();
 				}
-			}.getItemStack(world, BlockPos.containing(x, y, z), (int) slot)).getItem() == ItemStack.EMPTY.getItem())) {
+			}.getItemStack(world, new BlockPos(x, y, z), (int) slot)).getItem() == ItemStack.EMPTY.getItem())) {
 				hasInventory = true;
 			}
 			slot = slot + 1;
@@ -37,7 +37,7 @@ public class CandyBagCraftProcedure {
 			if ((blockstate.getBlock().getStateDefinition().getProperty("content") instanceof IntegerProperty _getip4 ? blockstate.getValue(_getip4) : -1) == 0) {
 				{
 					int _value = Mth.nextInt(RandomSource.create(), 1, 4);
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("content") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -46,7 +46,7 @@ public class CandyBagCraftProcedure {
 		} else {
 			{
 				int _value = 0;
-				BlockPos _pos = BlockPos.containing(x, y, z);
+				BlockPos _pos = new BlockPos(x, y, z);
 				BlockState _bs = world.getBlockState(_pos);
 				if (_bs.getBlock().getStateDefinition().getProperty("content") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 					world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);

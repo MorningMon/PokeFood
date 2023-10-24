@@ -1,12 +1,10 @@
 {
-  "_fv": 47,
+  "_fv": 43,
   "_type": "item",
   "definition": {
     "renderType": 0,
     "texture": "lemonade_cup",
     "customModelName": "Normal",
-    "customProperties": {},
-    "states": [],
     "name": "Lemonade Cup",
     "rarity": "COMMON",
     "creativeTab": {

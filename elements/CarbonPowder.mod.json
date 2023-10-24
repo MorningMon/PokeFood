@@ -1,12 +1,10 @@
 {
-  "_fv": 47,
+  "_fv": 43,
   "_type": "item",
   "definition": {
     "renderType": 0,
     "texture": "ashes",
     "customModelName": "Normal",
-    "customProperties": {},
-    "states": [],
     "name": "Carbon Powder",
     "rarity": "COMMON",
     "creativeTab": {

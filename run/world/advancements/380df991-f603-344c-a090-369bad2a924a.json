@@ -1,0 +1,51 @@
+{
+  "pokefood:adv_alcohol_world": {
+    "criteria": {
+      "adv_alcohol_world": "2023-08-21 14:30:26 +0200"
+    },
+    "done": true
+  },
+  "pokefood:adv_hunter_world": {
+    "criteria": {
+      "adv_hunter_world": "2023-08-21 14:30:26 +0200"
+    },
+    "done": true
+  },
+  "pokefood:adv_baking_world": {
+    "criteria": {
+      "adv_baking_world": "2023-08-21 14:30:26 +0200"
+    },
+    "done": true
+  },
+  "pokefood:adv_pokefood": {
+    "criteria": {
+      "adv_pokefood": "2023-08-21 14:30:26 +0200"
+    },
+    "done": true
+  },
+  "pokefood:adv_drinks_world": {
+    "criteria": {
+      "adv_drinks_world": "2023-08-21 14:30:26 +0200"
+    },
+    "done": true
+  },
+  "pokefood:adv_start_of_world": {
+    "criteria": {
+      "adv_start_of_world": "2023-08-21 14:30:26 +0200"
+    },
+    "done": true
+  },
+  "minecraft:adventure/adventuring_time": {
+    "criteria": {
+      "minecraft:forest": "2023-08-21 14:30:27 +0200"
+    },
+    "done": false
+  },
+  "pokefood:adv_display": {
+    "criteria": {
+      "adv_display": "2023-08-21 14:30:48 +0200"
+    },
+    "done": true
+  },
+  "DataVersion": 3120
+}

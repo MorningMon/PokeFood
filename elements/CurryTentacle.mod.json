@@ -1,16 +1,14 @@
 {
-  "_fv": 47,
+  "_fv": 43,
   "_type": "item",
   "definition": {
     "renderType": 0,
     "texture": "curry_tentacle",
     "customModelName": "Normal",
-    "customProperties": {},
-    "states": [],
     "name": "Tentacle Curry",
     "rarity": "COMMON",
     "creativeTab": {
-      "value": "CUSTOM:PokeFoodCurries"
+      "value": "CUSTOM:PokeFood"
     },
     "stackSize": 1,
     "enchantability": 0,

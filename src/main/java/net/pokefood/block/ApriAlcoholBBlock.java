@@ -4,11 +4,10 @@ package net.pokefood.block;
 import net.pokefood.procedures.CheckIfLavaOrNetherProcedure;
 import net.pokefood.init.PokefoodModFluids;
 
-import net.minecraft.world.level.material.PushReaction;
-import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.Level;
 import net.minecraft.util.RandomSource;
@@ -17,7 +16,7 @@ import net.minecraft.core.BlockPos;
 
 public class ApriAlcoholBBlock extends LiquidBlock {
 	public ApriAlcoholBBlock() {
-		super(() -> PokefoodModFluids.APRI_ALCOHOL_B.get(), BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BLUE).strength(100f).noCollission().noLootTable().liquid().pushReaction(PushReaction.DESTROY).sound(SoundType.EMPTY).replaceable());
+		super(() -> PokefoodModFluids.APRI_ALCOHOL_B.get(), BlockBehaviour.Properties.of(Material.WATER, MaterialColor.COLOR_BLUE).strength(100f).noCollission().noLootTable());
 	}
 
 	@Override

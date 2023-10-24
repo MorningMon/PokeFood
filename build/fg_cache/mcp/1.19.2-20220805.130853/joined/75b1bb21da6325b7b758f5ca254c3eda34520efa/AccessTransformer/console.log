@@ -1,0 +1,6 @@
+JVM:         C:\All files\Logiciels\MCreator 2023.2\jdk\bin\java.exe
+JVM Args:    
+Run Args:    "--inJar", "C:\All files\Projets\Mcreator Projects\PokeFood_1.19.2\build\fg_cache\mcp\1.19.2-20220805.130853\joined\75b1bb21da6325b7b758f5ca254c3eda34520efa\rename\output.jar", "--outJar", "C:\All files\Projets\Mcreator Projects\PokeFood_1.19.2\build\fg_cache\mcp\1.19.2-20220805.130853\joined\75b1bb21da6325b7b758f5ca254c3eda34520efa\AccessTransformer\output.jar", "--atFile", "C:\All files\Projets\Mcreator Projects\PokeFood_1.19.2\src\main\resources\META-INF\accesstransformer.cfg", "--atFile", "C:\Users\fmont\AppData\Local\Temp\FG_ats_13460880922235009340.cfg"
+Classpath:   C:\Users\fmont\.mcreator\gradle\caches\forge_gradle\maven_downloader\net\minecraftforge\accesstransformers\8.0.7\accesstransformers-8.0.7-fatjar.jar
+Working Dir: C:\All files\Projets\Mcreator Projects\PokeFood_1.19.2\build\fg_cache\mcp\1.19.2-20220805.130853\joined\75b1bb21da6325b7b758f5ca254c3eda34520efa\AccessTransformer
+Main Class:  net.minecraftforge.accesstransformer.TransformerProcessor

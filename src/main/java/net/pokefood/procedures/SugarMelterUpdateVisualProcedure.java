@@ -24,16 +24,13 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.util.RandomSource;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.core.BlockPos;
 import net.minecraft.client.Minecraft;
 
@@ -58,11 +55,11 @@ public class SugarMelterUpdateVisualProcedure {
 	private static void execute(@Nullable Event event, LevelAccessor world, double x, double y, double z, BlockState blockstate, Entity entity) {
 		if (entity == null)
 			return;
-		if ((world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.SUGAR_MELTER_0.get() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.SUGAR_MELTER_1.get()
-				|| (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.SUGAR_MELTER_2.get() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.SUGAR_MELTER_3.get()
-				|| (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.SUGAR_MELTER_4.get() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.SUGAR_MELTER_5.get()
-				|| (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.SUGAR_MELTER_6.get() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.SUGAR_MELTER_7.get()
-				|| (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.SUGAR_MELTER_8.get() || (world.getBlockState(BlockPos.containing(x, y, z))).getBlock() == PokefoodModBlocks.SUGAR_MELTER_9.get()) {
+		if ((world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.SUGAR_MELTER_0.get() || (world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.SUGAR_MELTER_1.get()
+				|| (world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.SUGAR_MELTER_2.get() || (world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.SUGAR_MELTER_3.get()
+				|| (world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.SUGAR_MELTER_4.get() || (world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.SUGAR_MELTER_5.get()
+				|| (world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.SUGAR_MELTER_6.get() || (world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.SUGAR_MELTER_7.get()
+				|| (world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.SUGAR_MELTER_8.get() || (world.getBlockState(new BlockPos(x, y, z))).getBlock() == PokefoodModBlocks.SUGAR_MELTER_9.get()) {
 			if (entity.isShiftKeyDown() && (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == ItemStack.EMPTY.getItem() && new Object() {
 				public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 					AtomicInteger _retval = new AtomicInteger(0);
@@ -71,8 +68,8 @@ public class SugarMelterUpdateVisualProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 					return _retval.get();
 				}
-			}.getAmount(world, BlockPos.containing(x, y, z), 1) != 0) {
-				if (world instanceof ServerLevel _level) {
+			}.getAmount(world, new BlockPos(x, y, z), 1) != 0) {
+				if (world instanceof Level _level && !_level.isClientSide()) {
 					ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 0.1), (z + 0.5), (new Object() {
 						public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 							AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -81,11 +78,11 @@ public class SugarMelterUpdateVisualProcedure {
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 							return _retval.get();
 						}
-					}.getItemStack(world, BlockPos.containing(x, y, z), 1)));
+					}.getItemStack(world, new BlockPos(x, y, z), 1)));
 					entityToSpawn.setPickUpDelay(10);
 					_level.addFreshEntity(entityToSpawn);
 				}
-				if (world instanceof ServerLevel _level) {
+				if (world instanceof Level _level && !_level.isClientSide()) {
 					ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 0.1), (z + 0.5), (new Object() {
 						public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 							AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -94,11 +91,11 @@ public class SugarMelterUpdateVisualProcedure {
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 							return _retval.get();
 						}
-					}.getItemStack(world, BlockPos.containing(x, y, z), 2)));
+					}.getItemStack(world, new BlockPos(x, y, z), 2)));
 					entityToSpawn.setPickUpDelay(10);
 					_level.addFreshEntity(entityToSpawn);
 				}
-				if (world instanceof ServerLevel _level) {
+				if (world instanceof Level _level && !_level.isClientSide()) {
 					ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 0.1), (z + 0.5), (new Object() {
 						public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 							AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -107,12 +104,12 @@ public class SugarMelterUpdateVisualProcedure {
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 							return _retval.get();
 						}
-					}.getItemStack(world, BlockPos.containing(x, y, z), 3)));
+					}.getItemStack(world, new BlockPos(x, y, z), 3)));
 					entityToSpawn.setPickUpDelay(10);
 					_level.addFreshEntity(entityToSpawn);
 				}
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 1;
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -122,7 +119,7 @@ public class SugarMelterUpdateVisualProcedure {
 					}
 				}
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 2;
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -132,7 +129,7 @@ public class SugarMelterUpdateVisualProcedure {
 					}
 				}
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 3;
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
@@ -142,28 +139,28 @@ public class SugarMelterUpdateVisualProcedure {
 					}
 				}
 				{
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("has_bowl") instanceof BooleanProperty _booleanProp)
 						world.setBlock(_pos, _bs.setValue(_booleanProp, false), 3);
 				}
 				{
 					int _value = 0;
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("bowl") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 				}
 				{
 					int _value = 0;
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("color") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
 				}
 				{
 					int _value = 0;
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("content") instanceof IntegerProperty _integerProp && _integerProp.getPossibleValues().contains(_value))
 						world.setBlock(_pos, _bs.setValue(_integerProp, _value), 3);
@@ -179,7 +176,7 @@ public class SugarMelterUpdateVisualProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 						return _retval.get();
 					}
-				}.getAmount(world, BlockPos.containing(x, y, z), 1) != 0 && !((new Object() {
+				}.getAmount(world, new BlockPos(x, y, z), 1) != 0 && !((new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -187,8 +184,8 @@ public class SugarMelterUpdateVisualProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 1)).getItem() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem())) {
-					if (world instanceof ServerLevel _level) {
+				}.getItemStack(world, new BlockPos(x, y, z), 1)).getItem() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem())) {
+					if (world instanceof Level _level && !_level.isClientSide()) {
 						ItemEntity entityToSpawn = new ItemEntity(_level, (x + 0.5), (y + 0.1), (z + 0.5), (new Object() {
 							public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 								AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -197,13 +194,13 @@ public class SugarMelterUpdateVisualProcedure {
 									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 								return _retval.get();
 							}
-						}.getItemStack(world, BlockPos.containing(x, y, z), 1)));
+						}.getItemStack(world, new BlockPos(x, y, z), 1)));
 						entityToSpawn.setPickUpDelay(10);
 						_level.addFreshEntity(entityToSpawn);
 					}
 					if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModBlocks.MORTAR_AND_PESTLE_0.get().asItem()) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 1;
 								final ItemStack _setstack = new ItemStack(PokefoodModBlocks.MORTAR_AND_PESTLE_0.get());
@@ -216,7 +213,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModBlocks.MORTAR_AND_PESTLE_1.get().asItem()) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 1;
 								final ItemStack _setstack = new ItemStack(PokefoodModBlocks.MORTAR_AND_PESTLE_1.get());
@@ -229,7 +226,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModBlocks.MORTAR_AND_PESTLE_2.get().asItem()) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 1;
 								final ItemStack _setstack = new ItemStack(PokefoodModBlocks.MORTAR_AND_PESTLE_2.get());
@@ -242,7 +239,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModBlocks.MORTAR_AND_PESTLE_3.get().asItem()) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 1;
 								final ItemStack _setstack = new ItemStack(PokefoodModBlocks.MORTAR_AND_PESTLE_3.get());
@@ -255,7 +252,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModBlocks.MORTAR_AND_PESTLE_4.get().asItem()) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 1;
 								final ItemStack _setstack = new ItemStack(PokefoodModBlocks.MORTAR_AND_PESTLE_4.get());
@@ -268,7 +265,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModBlocks.MORTAR_AND_PESTLE_5.get().asItem()) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 1;
 								final ItemStack _setstack = new ItemStack(PokefoodModBlocks.MORTAR_AND_PESTLE_5.get());
@@ -281,7 +278,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModBlocks.MORTAR_AND_PESTLE_6.get().asItem()) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 1;
 								final ItemStack _setstack = new ItemStack(PokefoodModBlocks.MORTAR_AND_PESTLE_6.get());
@@ -294,7 +291,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModBlocks.MORTAR_AND_PESTLE_7.get().asItem()) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 1;
 								final ItemStack _setstack = new ItemStack(PokefoodModBlocks.MORTAR_AND_PESTLE_7.get());
@@ -307,7 +304,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModBlocks.MORTAR_AND_PESTLE_8.get().asItem()) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 1;
 								final ItemStack _setstack = new ItemStack(PokefoodModBlocks.MORTAR_AND_PESTLE_8.get());
@@ -320,7 +317,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModBlocks.MORTAR_AND_PESTLE_9.get().asItem()) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 1;
 								final ItemStack _setstack = new ItemStack(PokefoodModBlocks.MORTAR_AND_PESTLE_9.get());
@@ -333,7 +330,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModBlocks.MORTAR_AND_PESTLE_10.get().asItem()) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 1;
 								final ItemStack _setstack = new ItemStack(PokefoodModBlocks.MORTAR_AND_PESTLE_10.get());
@@ -346,14 +343,14 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					}
 					{
-						BlockPos _pos = BlockPos.containing(x, y, z);
+						BlockPos _pos = new BlockPos(x, y, z);
 						BlockState _bs = world.getBlockState(_pos);
 						if (_bs.getBlock().getStateDefinition().getProperty("has_bowl") instanceof BooleanProperty _booleanProp)
 							world.setBlock(_pos, _bs.setValue(_booleanProp, true), 3);
 					}
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
-							_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wood.place")), SoundSource.BLOCKS, 1, 1);
+							_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wood.place")), SoundSource.BLOCKS, 1, 1);
 						} else {
 							_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wood.place")), SoundSource.BLOCKS, 1, 1, false);
 						}
@@ -362,7 +359,7 @@ public class SugarMelterUpdateVisualProcedure {
 						public boolean checkGamemode(Entity _ent) {
 							if (_ent instanceof ServerPlayer _serverPlayer) {
 								return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-							} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+							} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
 								return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
 										&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
 							}
@@ -382,10 +379,10 @@ public class SugarMelterUpdateVisualProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 						return _retval.get();
 					}
-				}.getAmount(world, BlockPos.containing(x, y, z), 1) == 0) {
+				}.getAmount(world, new BlockPos(x, y, z), 1) == 0) {
 					if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModBlocks.MORTAR_AND_PESTLE_0.get().asItem()) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 1;
 								final ItemStack _setstack = new ItemStack(PokefoodModBlocks.MORTAR_AND_PESTLE_0.get());
@@ -398,7 +395,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModBlocks.MORTAR_AND_PESTLE_1.get().asItem()) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 1;
 								final ItemStack _setstack = new ItemStack(PokefoodModBlocks.MORTAR_AND_PESTLE_1.get());
@@ -411,7 +408,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModBlocks.MORTAR_AND_PESTLE_2.get().asItem()) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 1;
 								final ItemStack _setstack = new ItemStack(PokefoodModBlocks.MORTAR_AND_PESTLE_2.get());
@@ -424,7 +421,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModBlocks.MORTAR_AND_PESTLE_3.get().asItem()) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 1;
 								final ItemStack _setstack = new ItemStack(PokefoodModBlocks.MORTAR_AND_PESTLE_3.get());
@@ -437,7 +434,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModBlocks.MORTAR_AND_PESTLE_4.get().asItem()) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 1;
 								final ItemStack _setstack = new ItemStack(PokefoodModBlocks.MORTAR_AND_PESTLE_4.get());
@@ -450,7 +447,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModBlocks.MORTAR_AND_PESTLE_5.get().asItem()) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 1;
 								final ItemStack _setstack = new ItemStack(PokefoodModBlocks.MORTAR_AND_PESTLE_5.get());
@@ -463,7 +460,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModBlocks.MORTAR_AND_PESTLE_6.get().asItem()) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 1;
 								final ItemStack _setstack = new ItemStack(PokefoodModBlocks.MORTAR_AND_PESTLE_6.get());
@@ -476,7 +473,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModBlocks.MORTAR_AND_PESTLE_7.get().asItem()) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 1;
 								final ItemStack _setstack = new ItemStack(PokefoodModBlocks.MORTAR_AND_PESTLE_7.get());
@@ -489,7 +486,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModBlocks.MORTAR_AND_PESTLE_8.get().asItem()) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 1;
 								final ItemStack _setstack = new ItemStack(PokefoodModBlocks.MORTAR_AND_PESTLE_8.get());
@@ -502,7 +499,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModBlocks.MORTAR_AND_PESTLE_9.get().asItem()) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 1;
 								final ItemStack _setstack = new ItemStack(PokefoodModBlocks.MORTAR_AND_PESTLE_9.get());
@@ -515,7 +512,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModBlocks.MORTAR_AND_PESTLE_10.get().asItem()) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 1;
 								final ItemStack _setstack = new ItemStack(PokefoodModBlocks.MORTAR_AND_PESTLE_10.get());
@@ -528,14 +525,14 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					}
 					{
-						BlockPos _pos = BlockPos.containing(x, y, z);
+						BlockPos _pos = new BlockPos(x, y, z);
 						BlockState _bs = world.getBlockState(_pos);
 						if (_bs.getBlock().getStateDefinition().getProperty("has_bowl") instanceof BooleanProperty _booleanProp)
 							world.setBlock(_pos, _bs.setValue(_booleanProp, true), 3);
 					}
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
-							_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wood.place")), SoundSource.BLOCKS, 1, 1);
+							_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wood.place")), SoundSource.BLOCKS, 1, 1);
 						} else {
 							_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.wood.place")), SoundSource.BLOCKS, 1, 1, false);
 						}
@@ -544,7 +541,7 @@ public class SugarMelterUpdateVisualProcedure {
 						public boolean checkGamemode(Entity _ent) {
 							if (_ent instanceof ServerPlayer _serverPlayer) {
 								return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-							} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+							} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
 								return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
 										&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
 							}
@@ -567,7 +564,7 @@ public class SugarMelterUpdateVisualProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 					return _retval.get();
 				}
-			}.getAmount(world, BlockPos.containing(x, y, z), 0) < 8 && ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.COAL
+			}.getAmount(world, new BlockPos(x, y, z), 0) < 8 && ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.COAL
 					|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.CHARCOAL
 					|| (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModItems.CARBON_POWDER.get())) {
 				if (new Object() {
@@ -578,7 +575,7 @@ public class SugarMelterUpdateVisualProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 						return _retval.get();
 					}
-				}.getAmount(world, BlockPos.containing(x, y, z), 0) > 0 && ((new Object() {
+				}.getAmount(world, new BlockPos(x, y, z), 0) > 0 && ((new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -586,7 +583,7 @@ public class SugarMelterUpdateVisualProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 0)).getItem() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() || (new Object() {
+				}.getItemStack(world, new BlockPos(x, y, z), 0)).getItem() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() || (new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 						BlockEntity _ent = world.getBlockEntity(pos);
@@ -594,9 +591,9 @@ public class SugarMelterUpdateVisualProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 0)).getItem() == ItemStack.EMPTY.getItem())) {
+				}.getItemStack(world, new BlockPos(x, y, z), 0)).getItem() == ItemStack.EMPTY.getItem())) {
 					{
-						BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+						BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 						if (_ent != null) {
 							final int _slotid = 0;
 							final ItemStack _setstack = (new Object() {
@@ -607,7 +604,7 @@ public class SugarMelterUpdateVisualProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 									return _retval.get();
 								}
-							}.getItemStack(world, BlockPos.containing(x, y, z), 0));
+							}.getItemStack(world, new BlockPos(x, y, z), 0));
 							_setstack.setCount((int) (new Object() {
 								public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 									AtomicInteger _retval = new AtomicInteger(0);
@@ -616,7 +613,7 @@ public class SugarMelterUpdateVisualProcedure {
 										_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 									return _retval.get();
 								}
-							}.getAmount(world, BlockPos.containing(x, y, z), 0) + 1));
+							}.getAmount(world, new BlockPos(x, y, z), 0) + 1));
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 								if (capability instanceof IItemHandlerModifiable)
 									((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -625,7 +622,7 @@ public class SugarMelterUpdateVisualProcedure {
 					}
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
-							_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.stone.hit")), SoundSource.BLOCKS, 1, 1);
+							_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.stone.hit")), SoundSource.BLOCKS, 1, 1);
 						} else {
 							_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.stone.hit")), SoundSource.BLOCKS, 1, 1, false);
 						}
@@ -634,7 +631,7 @@ public class SugarMelterUpdateVisualProcedure {
 						public boolean checkGamemode(Entity _ent) {
 							if (_ent instanceof ServerPlayer _serverPlayer) {
 								return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-							} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+							} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
 								return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
 										&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
 							}
@@ -651,7 +648,7 @@ public class SugarMelterUpdateVisualProcedure {
 				} else {
 					if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.COAL) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 0;
 								final ItemStack _setstack = new ItemStack(Items.COAL);
@@ -663,7 +660,7 @@ public class SugarMelterUpdateVisualProcedure {
 											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 										return _retval.get();
 									}
-								}.getAmount(world, BlockPos.containing(x, y, z), 0) + 1));
+								}.getAmount(world, new BlockPos(x, y, z), 0) + 1));
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 									if (capability instanceof IItemHandlerModifiable)
 										((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -672,7 +669,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.CHARCOAL) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 0;
 								final ItemStack _setstack = new ItemStack(Items.CHARCOAL);
@@ -684,7 +681,7 @@ public class SugarMelterUpdateVisualProcedure {
 											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 										return _retval.get();
 									}
-								}.getAmount(world, BlockPos.containing(x, y, z), 0) + 1));
+								}.getAmount(world, new BlockPos(x, y, z), 0) + 1));
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 									if (capability instanceof IItemHandlerModifiable)
 										((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -693,7 +690,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == PokefoodModItems.CARBON_POWDER.get()) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 0;
 								final ItemStack _setstack = new ItemStack(PokefoodModItems.CARBON_POWDER.get());
@@ -705,7 +702,7 @@ public class SugarMelterUpdateVisualProcedure {
 											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 										return _retval.get();
 									}
-								}.getAmount(world, BlockPos.containing(x, y, z), 0) + 1));
+								}.getAmount(world, new BlockPos(x, y, z), 0) + 1));
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 									if (capability instanceof IItemHandlerModifiable)
 										((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -715,7 +712,7 @@ public class SugarMelterUpdateVisualProcedure {
 					}
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
-							_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.stone.hit")), SoundSource.BLOCKS, 1, 1);
+							_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.stone.hit")), SoundSource.BLOCKS, 1, 1);
 						} else {
 							_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.stone.hit")), SoundSource.BLOCKS, 1, 1, false);
 						}
@@ -724,7 +721,7 @@ public class SugarMelterUpdateVisualProcedure {
 						public boolean checkGamemode(Entity _ent) {
 							if (_ent instanceof ServerPlayer _serverPlayer) {
 								return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-							} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+							} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
 								return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
 										&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
 							}
@@ -749,11 +746,11 @@ public class SugarMelterUpdateVisualProcedure {
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 							return _retval.get();
 						}
-					}.getAmount(world, BlockPos.containing(x, y, z), 0) > 0) {
+					}.getAmount(world, new BlockPos(x, y, z), 0) > 0) {
 				if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.FLINT_AND_STEEL) {
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
-							_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.flintandsteel.use")), SoundSource.BLOCKS, 1, 1);
+							_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.flintandsteel.use")), SoundSource.BLOCKS, 1, 1);
 						} else {
 							_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.flintandsteel.use")), SoundSource.BLOCKS, 1, 1, false);
 						}
@@ -762,7 +759,7 @@ public class SugarMelterUpdateVisualProcedure {
 						public boolean checkGamemode(Entity _ent) {
 							if (_ent instanceof ServerPlayer _serverPlayer) {
 								return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-							} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+							} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
 								return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
 										&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
 							}
@@ -782,7 +779,7 @@ public class SugarMelterUpdateVisualProcedure {
 						public boolean checkGamemode(Entity _ent) {
 							if (_ent instanceof ServerPlayer _serverPlayer) {
 								return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-							} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+							} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
 								return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
 										&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
 							}
@@ -796,14 +793,14 @@ public class SugarMelterUpdateVisualProcedure {
 					}
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
-							_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.firecharge.use")), SoundSource.BLOCKS, 1, 1);
+							_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.firecharge.use")), SoundSource.BLOCKS, 1, 1);
 						} else {
 							_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("item.firecharge.use")), SoundSource.BLOCKS, 1, 1, false);
 						}
 					}
 				}
 				{
-					BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+					BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 					if (_ent != null) {
 						final int _slotid = 0;
 						final int _amount = 1;
@@ -817,7 +814,7 @@ public class SugarMelterUpdateVisualProcedure {
 					}
 				}
 				{
-					BlockPos _pos = BlockPos.containing(x, y, z);
+					BlockPos _pos = new BlockPos(x, y, z);
 					BlockState _bs = world.getBlockState(_pos);
 					if (_bs.getBlock().getStateDefinition().getProperty("lit") instanceof BooleanProperty _booleanProp)
 						world.setBlock(_pos, _bs.setValue(_booleanProp, true), 3);
@@ -832,7 +829,7 @@ public class SugarMelterUpdateVisualProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 					return _retval.get();
 				}
-			}.getAmount(world, BlockPos.containing(x, y, z), 1) != 0) {
+			}.getAmount(world, new BlockPos(x, y, z), 1) != 0) {
 				if ((blockstate.getBlock().getStateDefinition().getProperty("lit") instanceof BooleanProperty _getbp188 && blockstate.getValue(_getbp188)) == false) {
 					if (new Object() {
 						public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
@@ -842,7 +839,7 @@ public class SugarMelterUpdateVisualProcedure {
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 							return _retval.get();
 						}
-					}.getAmount(world, BlockPos.containing(x, y, z), 2) < 8 && ((new Object() {
+					}.getAmount(world, new BlockPos(x, y, z), 2) < 8 && ((new Object() {
 						public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 							AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 							BlockEntity _ent = world.getBlockEntity(pos);
@@ -850,7 +847,7 @@ public class SugarMelterUpdateVisualProcedure {
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 							return _retval.get();
 						}
-					}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() || (new Object() {
+					}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == (entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() || (new Object() {
 						public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 							AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
 							BlockEntity _ent = world.getBlockEntity(pos);
@@ -858,9 +855,9 @@ public class SugarMelterUpdateVisualProcedure {
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 							return _retval.get();
 						}
-					}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == ItemStack.EMPTY.getItem())) {
+					}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == ItemStack.EMPTY.getItem())) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 2;
 								final ItemStack _setstack = new ItemStack(Items.SUGAR);
@@ -872,7 +869,7 @@ public class SugarMelterUpdateVisualProcedure {
 											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 										return _retval.get();
 									}
-								}.getAmount(world, BlockPos.containing(x, y, z), 2) + 1));
+								}.getAmount(world, new BlockPos(x, y, z), 2) + 1));
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 									if (capability instanceof IItemHandlerModifiable)
 										((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -881,7 +878,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 						if (world instanceof Level _level) {
 							if (!_level.isClientSide()) {
-								_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.azalea_leaves.place")), SoundSource.BLOCKS, 1, 1);
+								_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.azalea_leaves.place")), SoundSource.BLOCKS, 1, 1);
 							} else {
 								_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.azalea_leaves.place")), SoundSource.BLOCKS, 1, 1, false);
 							}
@@ -890,7 +887,7 @@ public class SugarMelterUpdateVisualProcedure {
 							public boolean checkGamemode(Entity _ent) {
 								if (_ent instanceof ServerPlayer _serverPlayer) {
 									return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-								} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+								} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
 									return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
 											&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
 								}
@@ -914,9 +911,9 @@ public class SugarMelterUpdateVisualProcedure {
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 							return _retval.get();
 						}
-					}.getItemStack(world, BlockPos.containing(x, y, z), 2)).getItem() == ItemStack.EMPTY.getItem()) {
+					}.getItemStack(world, new BlockPos(x, y, z), 2)).getItem() == ItemStack.EMPTY.getItem()) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 2;
 								final ItemStack _setstack = new ItemStack(Items.SUGAR);
@@ -928,7 +925,7 @@ public class SugarMelterUpdateVisualProcedure {
 											_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 										return _retval.get();
 									}
-								}.getAmount(world, BlockPos.containing(x, y, z), 2) + 1));
+								}.getAmount(world, new BlockPos(x, y, z), 2) + 1));
 								_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 									if (capability instanceof IItemHandlerModifiable)
 										((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -937,7 +934,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 						if (world instanceof Level _level) {
 							if (!_level.isClientSide()) {
-								_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.azalea_leaves.place")), SoundSource.BLOCKS, 1, 1);
+								_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.azalea_leaves.place")), SoundSource.BLOCKS, 1, 1);
 							} else {
 								_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.azalea_leaves.place")), SoundSource.BLOCKS, 1, 1, false);
 							}
@@ -946,7 +943,7 @@ public class SugarMelterUpdateVisualProcedure {
 							public boolean checkGamemode(Entity _ent) {
 								if (_ent instanceof ServerPlayer _serverPlayer) {
 									return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-								} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+								} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
 									return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
 											&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
 								}
@@ -969,9 +966,9 @@ public class SugarMelterUpdateVisualProcedure {
 									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 								return _retval.get();
 							}
-						}.getAmount(world, BlockPos.containing(x, y, z), 2) < 8) {
+						}.getAmount(world, new BlockPos(x, y, z), 2) < 8) {
 							{
-								BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+								BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 								if (_ent != null) {
 									final int _slotid = 2;
 									final ItemStack _setstack = (new Object() {
@@ -982,7 +979,7 @@ public class SugarMelterUpdateVisualProcedure {
 												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 											return _retval.get();
 										}
-									}.getItemStack(world, BlockPos.containing(x, y, z), 2));
+									}.getItemStack(world, new BlockPos(x, y, z), 2));
 									_setstack.setCount((int) (new Object() {
 										public int getAmount(LevelAccessor world, BlockPos pos, int slotid) {
 											AtomicInteger _retval = new AtomicInteger(0);
@@ -991,7 +988,7 @@ public class SugarMelterUpdateVisualProcedure {
 												_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 											return _retval.get();
 										}
-									}.getAmount(world, BlockPos.containing(x, y, z), 2) + 1));
+									}.getAmount(world, new BlockPos(x, y, z), 2) + 1));
 									_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> {
 										if (capability instanceof IItemHandlerModifiable)
 											((IItemHandlerModifiable) capability).setStackInSlot(_slotid, _setstack);
@@ -1000,7 +997,7 @@ public class SugarMelterUpdateVisualProcedure {
 							}
 							if (world instanceof Level _level) {
 								if (!_level.isClientSide()) {
-									_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.azalea_leaves.place")), SoundSource.BLOCKS, 1, 1);
+									_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.azalea_leaves.place")), SoundSource.BLOCKS, 1, 1);
 								} else {
 									_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.azalea_leaves.place")), SoundSource.BLOCKS, 1, 1, false);
 								}
@@ -1009,7 +1006,7 @@ public class SugarMelterUpdateVisualProcedure {
 								public boolean checkGamemode(Entity _ent) {
 									if (_ent instanceof ServerPlayer _serverPlayer) {
 										return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-									} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+									} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
 										return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
 												&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
 									}
@@ -1036,7 +1033,7 @@ public class SugarMelterUpdateVisualProcedure {
 						_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).getCount()));
 					return _retval.get();
 				}
-			}.getAmount(world, BlockPos.containing(x, y, z), 1) != 0) {
+			}.getAmount(world, new BlockPos(x, y, z), 1) != 0) {
 				if ((new Object() {
 					public ItemStack getItemStack(LevelAccessor world, BlockPos pos, int slotid) {
 						AtomicReference<ItemStack> _retval = new AtomicReference<>(ItemStack.EMPTY);
@@ -1045,10 +1042,10 @@ public class SugarMelterUpdateVisualProcedure {
 							_ent.getCapability(ForgeCapabilities.ITEM_HANDLER, null).ifPresent(capability -> _retval.set(capability.getStackInSlot(slotid).copy()));
 						return _retval.get();
 					}
-				}.getItemStack(world, BlockPos.containing(x, y, z), 3)).getItem() == ItemStack.EMPTY.getItem()) {
+				}.getItemStack(world, new BlockPos(x, y, z), 3)).getItem() == ItemStack.EMPTY.getItem()) {
 					if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.WHITE_DYE) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 3;
 								final ItemStack _setstack = new ItemStack(Items.WHITE_DYE);
@@ -1061,7 +1058,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.LIGHT_GRAY_DYE) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 3;
 								final ItemStack _setstack = new ItemStack(Items.LIGHT_GRAY_DYE);
@@ -1074,7 +1071,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.GRAY_DYE) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 3;
 								final ItemStack _setstack = new ItemStack(Items.GRAY_DYE);
@@ -1087,7 +1084,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.BLACK_DYE) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 3;
 								final ItemStack _setstack = new ItemStack(Items.BLACK_DYE);
@@ -1100,7 +1097,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.BROWN_DYE) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 3;
 								final ItemStack _setstack = new ItemStack(Items.BROWN_DYE);
@@ -1113,7 +1110,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.RED_DYE) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 3;
 								final ItemStack _setstack = new ItemStack(Items.RED_DYE);
@@ -1126,7 +1123,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.ORANGE_DYE) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 3;
 								final ItemStack _setstack = new ItemStack(Items.ORANGE_DYE);
@@ -1139,7 +1136,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.YELLOW_DYE) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 3;
 								final ItemStack _setstack = new ItemStack(Items.YELLOW_DYE);
@@ -1152,7 +1149,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.LIME_DYE) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 3;
 								final ItemStack _setstack = new ItemStack(Items.LIME_DYE);
@@ -1165,7 +1162,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.GREEN_DYE) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 3;
 								final ItemStack _setstack = new ItemStack(Items.GREEN_DYE);
@@ -1178,7 +1175,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.CYAN_DYE) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 3;
 								final ItemStack _setstack = new ItemStack(Items.CYAN_DYE);
@@ -1191,7 +1188,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.LIGHT_BLUE_DYE) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 3;
 								final ItemStack _setstack = new ItemStack(Items.LIGHT_BLUE_DYE);
@@ -1204,7 +1201,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.BLUE_DYE) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 3;
 								final ItemStack _setstack = new ItemStack(Items.BLUE_DYE);
@@ -1217,7 +1214,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.PURPLE_DYE) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 3;
 								final ItemStack _setstack = new ItemStack(Items.PURPLE_DYE);
@@ -1230,7 +1227,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.MAGENTA_DYE) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 3;
 								final ItemStack _setstack = new ItemStack(Items.MAGENTA_DYE);
@@ -1243,7 +1240,7 @@ public class SugarMelterUpdateVisualProcedure {
 						}
 					} else if ((entity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() == Items.PINK_DYE) {
 						{
-							BlockEntity _ent = world.getBlockEntity(BlockPos.containing(x, y, z));
+							BlockEntity _ent = world.getBlockEntity(new BlockPos(x, y, z));
 							if (_ent != null) {
 								final int _slotid = 3;
 								final ItemStack _setstack = new ItemStack(Items.PINK_DYE);
@@ -1257,7 +1254,7 @@ public class SugarMelterUpdateVisualProcedure {
 					}
 					if (world instanceof Level _level) {
 						if (!_level.isClientSide()) {
-							_level.playSound(null, BlockPos.containing(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.azalea_leaves.place")), SoundSource.BLOCKS, 1, 1);
+							_level.playSound(null, new BlockPos(x, y, z), ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.azalea_leaves.place")), SoundSource.BLOCKS, 1, 1);
 						} else {
 							_level.playLocalSound(x, y, z, ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation("block.azalea_leaves.place")), SoundSource.BLOCKS, 1, 1, false);
 						}
@@ -1266,7 +1263,7 @@ public class SugarMelterUpdateVisualProcedure {
 						public boolean checkGamemode(Entity _ent) {
 							if (_ent instanceof ServerPlayer _serverPlayer) {
 								return _serverPlayer.gameMode.getGameModeForPlayer() == GameType.CREATIVE;
-							} else if (_ent.level().isClientSide() && _ent instanceof Player _player) {
+							} else if (_ent.level.isClientSide() && _ent instanceof Player _player) {
 								return Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()) != null
 										&& Minecraft.getInstance().getConnection().getPlayerInfo(_player.getGameProfile().getId()).getGameMode() == GameType.CREATIVE;
 							}
@@ -1283,7 +1280,7 @@ public class SugarMelterUpdateVisualProcedure {
 				}
 			}
 			if ((blockstate.getBlock().getStateDefinition().getProperty("lit") instanceof BooleanProperty _getbp283 && blockstate.getValue(_getbp283)) == true) {
-				entity.hurt(new DamageSource(world.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.IN_FIRE)), 1);
+				entity.hurt(DamageSource.IN_FIRE, 1);
 				if (entity instanceof LivingEntity _entity)
 					_entity.swing(InteractionHand.MAIN_HAND, true);
 			}

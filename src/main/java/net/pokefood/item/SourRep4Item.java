@@ -2,6 +2,7 @@
 package net.pokefood.item;
 
 import net.pokefood.procedures.ReplacementsUnlockAdvProcedure;
+import net.pokefood.init.PokefoodModTabs;
 
 import net.minecraft.world.level.Level;
 import net.minecraft.world.item.TooltipFlag;
@@ -15,7 +16,7 @@ import java.util.List;
 
 public class SourRep4Item extends Item {
 	public SourRep4Item() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON));
+		super(new Item.Properties().tab(PokefoodModTabs.TAB_POKE_FOOD_INGREDIENTS).stacksTo(64).rarity(Rarity.COMMON));
 	}
 
 	@Override

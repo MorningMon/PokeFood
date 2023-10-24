@@ -1,0 +1,16 @@
+JVM:         C:\All files\Logiciels\MCreator 2023.2\jdk\bin\java.exe
+JVM Args:    
+Run Args:    "--task", "MERGE_MAPPING", "--left", "config/joined.tsrg", "--right", "C:\All files\Projets\Mcreator Projects\PokeFood_1.19.2\build\fg_cache\mcp\1.19.2-20220805.130853\joined\75b1bb21da6325b7b758f5ca254c3eda34520efa\downloadClientMappings\client_mappings.txt", "--right-names", "right,left", "--classes", "--output", "C:\All files\Projets\Mcreator Projects\PokeFood_1.19.2\build\fg_cache\mcp\1.19.2-20220805.130853\joined\75b1bb21da6325b7b758f5ca254c3eda34520efa\mergeMappings\output.jar"
+Classpath:   C:\Users\fmont\.mcreator\gradle\caches\forge_gradle\maven_downloader\net\minecraftforge\installertools\1.2.0\installertools-1.2.0-fatjar.jar
+Working Dir: C:\All files\Projets\Mcreator Projects\PokeFood_1.19.2\build\fg_cache\mcp\1.19.2-20220805.130853\joined\75b1bb21da6325b7b758f5ca254c3eda34520efa\mergeMappings
+Main Class:  net.minecraftforge.installertools.ConsoleTool
+Task: MERGE_MAPPING
+Left:    config\joined.tsrg
+         null
+Right:   C:\All files\Projets\Mcreator Projects\PokeFood_1.19.2\build\fg_cache\mcp\1.19.2-20220805.130853\joined\75b1bb21da6325b7b758f5ca254c3eda34520efa\downloadClientMappings\client_mappings.txt
+         right,left
+Classes: true
+Fields:  false
+Methods: false
+Params:  false
+Output:  C:\All files\Projets\Mcreator Projects\PokeFood_1.19.2\build\fg_cache\mcp\1.19.2-20220805.130853\joined\75b1bb21da6325b7b758f5ca254c3eda34520efa\mergeMappings\output.jar

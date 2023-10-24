@@ -1,12 +1,10 @@
 {
-  "_fv": 47,
+  "_fv": 43,
   "_type": "item",
   "definition": {
     "renderType": 0,
     "texture": "poped_calcuim",
     "customModelName": "Normal",
-    "customProperties": {},
-    "states": [],
     "name": "Popped Calcuim",
     "rarity": "COMMON",
     "creativeTab": {
@@ -31,6 +29,9 @@
     "guiBoundTo": "<NONE>",
     "inventorySize": 9,
     "inventoryStackSize": 64,
+    "onItemInInventoryTick": {
+      "name": "FryingVeganUnlockAdv"
+    },
     "isFood": true,
     "nutritionalValue": 1,
     "saturation": 1.0,

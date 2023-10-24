@@ -2,6 +2,7 @@
 package net.pokefood.item;
 
 import net.pokefood.procedures.AprishakeUnlockAdvProcedure;
+import net.pokefood.init.PokefoodModTabs;
 import net.pokefood.init.PokefoodModItems;
 
 import net.minecraft.world.level.Level;
@@ -16,12 +17,24 @@ import net.minecraft.world.entity.Entity;
 
 public class CreamedLatteItem extends Item {
 	public CreamedLatteItem() {
-		super(new Item.Properties().stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(3).saturationMod(1.5f).alwaysEat().build()));
+		super(new Item.Properties().tab(PokefoodModTabs.TAB_POKE_FOOD_DRINKS).stacksTo(64).rarity(Rarity.COMMON).food((new FoodProperties.Builder()).nutrition(3).saturationMod(1.5f).alwaysEat()
+
+				.build()));
 	}
 
 	@Override
 	public UseAnim getUseAnimation(ItemStack itemstack) {
 		return UseAnim.DRINK;
+	}
+
+	@Override
+	public boolean hasCraftingRemainingItem() {
+		return true;
+	}
+
+	@Override
+	public ItemStack getCraftingRemainingItem(ItemStack itemstack) {
+		return new ItemStack(PokefoodModItems.CUP.get());
 	}
 
 	@Override
